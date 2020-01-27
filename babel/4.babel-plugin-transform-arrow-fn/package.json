@@ -1,0 +1,14 @@
+{
+  "name": "4.babel-plugin-transfrom-arrow-fn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "compile": "babel index.js -d dist"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-transform-arrow-functions": "^7.8.3"
+  }
+}

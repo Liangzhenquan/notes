@@ -1,0 +1,18 @@
+{
+  "name": "6.plugin-transform-runtime",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "compile": "babel src/one.js -d dist"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/polyfill": "^7.8.3"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.8.3"
+  }
+}

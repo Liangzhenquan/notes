@@ -1,0 +1,13 @@
+{
+  "name": "1.webpack-cli",
+  "version": "1.0.0",
+  "main": "index1.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack --mode production"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
