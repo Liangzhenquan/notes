@@ -1,17 +1,18 @@
 {
-  "name": "5.actualcombat",
+  "name": "5.subscription",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "graphql": "^14.6.0",
     "koa": "^2.11.0",
     "koa-graphql": "^0.8.0",
     "koa-mount": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

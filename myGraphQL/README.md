@@ -3,6 +3,7 @@
 * 新的API标准，由Facebook在2015年开源
 * 一个用于 API 的查询语言，是一个使用基于类型系统来执行查询的服务端运行时（类型系统由你的数据定义）
 * 核心是启用声明式数据获取，客户端可以在其中确切指定从API中需要什么数据。
+![](https://img-blog.csdnimg.cn/20200110112615666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njc0NjE2,size_16,color_FFFFFF,t_70)
 ## 为什么会出现GraphQL？
 **1.移动使用量的增加导致有效数据的需求**
 移动使用的增加，低功耗设备和草率的网络是Facebook开发GraphQL的最初原因。graphql可以最大限度的减少需要通过网络传输的数据量，从而极大地改善了在这些条件下运行的应用程序。
@@ -13,10 +14,14 @@
 ## GraphQL和restful对比
 * restful一个接口返回一个资源，graphql一次可以返回多个资源
 * restful用不同的url来区别资源，graphql用类型来区别资源
+## Schema
+shema定义了字段的类型、数据的结构，描述了接口请求的规则。当我们进行一些错误的查询的时候 GraphQL 引擎会负责告诉我们哪里有问题，和详细的错误信息，对开发调试十分友好。
 ## 基本参数类型
-**基本类型**
+**标量类型**
 * String,Int,Float,Boolean和ID,可以在schema声明中直接使用
 * [类型]代表数组，例: [Int]代表整型数组
+**对象类型**
+用户在schema中定义的type
 ## 参数传递
 * 小括号内定义形参，注意：参数需要定义类型
 * !(叹号)代表参数不能为空
@@ -101,7 +106,7 @@ fetch(`http://localhost:7000/`, {
 .then(data => console.log(data))
 .catch(error => console.log(error))
 ```
-## Mutation-修改数据
+## Mutation-变更数据
 我们已经知道，查询使用query,那么修改数据呢？修改数据用的是Mutation。
 ```js
 input AccountInput {
@@ -117,6 +122,7 @@ type Mutation {
 }
 ```
 input代表输入类型
+## sub
 ## 高级
 ### Constructing Types
 **1.定义type**
