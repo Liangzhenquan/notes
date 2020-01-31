@@ -316,7 +316,11 @@ let observable1 = Observerble.of(1,2,3).map(count => count + '!!!')
 `.of(..)`操作符返回了一个observable(暂叫A),然后我们再在原基础（.of）后加一个操作符`.map(...)`，这时候也返回了一个observable(暂叫B)，这时候这两个observable(A和B)是不一样的
 ### 操作符分类
 根据不同的用途，操作符可以分为创建、转换、过滤、组合、错误处理、工具，等等，下面是一些常用的操作符，[详细请看](https://cn.rx.js.org/manual/overview.html#h213)
+|名称| 描述 | 示例 | 示例描述|
+| ---- | ---- | ---- | ---- |
+|123 |123|
 **创建操作符**
+
 |名称| 描述 | 示例 | 示例描述|
 | ---- | ---- | ---- | ---- |
 |create| 创建一个新的 Observable | Rx.Observable.create((observer) => {...}) | | |
