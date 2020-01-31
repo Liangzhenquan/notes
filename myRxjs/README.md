@@ -339,6 +339,7 @@ let observable1 = Observerble.of(1,2,3).map(count => count + '!!!')
 |mapTo|每次源 Observble 发出值时，都在输出 Observable 上发出给定的常量值。类似于 map，但它每一次都把源值映射成同一个输出值。|Rx.Observable.fromEvent(document, 'click').mapTo('hi').subscribe(x=>console.log(x))
 |pluck|将每个源值(对象)映射成它指定的嵌套属性。类似于 map，但仅用于选择每个发出对象的某个嵌套属性。如果属性无法解析，它会返回 undefined 。|Rx.Observable.of({id: 1,name: 'jack'},{id: 2,name: 'jack'}).pluck('id').subscribe(x => console.log(x))|输出每一个对象的id，所以输出1,2
 |scan|对源 Observable 使用累加器函数， 返回生成的中间值， 可选的初始值。像是reduce， 但是会发出中间的累加值。|Observable.of({id: 1, name:'jack'}, {id:2, name: 'tom'}, {id: 1, name: 'terry'}).pluck('id').scan((acc,current) => acc +current,0).subscribe(x => console.log(x))|因为scan累加后发出中间值，所以是0+1,1+2,3+1，输出1,3,4|
+
 **过滤操作符**
 
 |名称| 描述 | 示例 | 示例描述|
