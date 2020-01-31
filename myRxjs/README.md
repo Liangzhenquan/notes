@@ -319,10 +319,10 @@ let observable1 = Observerble.of(1,2,3).map(count => count + '!!!')
 **创建操作符**
 |名称| 描述 | 示例 | 示例描述|
 | ---- | ---- | ---- | ---- |
-|create| 创建一个新的 Observable | Rx.Observable.create((observer) => {...}) |
-|empty| 创建一个什么数据都不发出并且立马完成的Observable| Rx.Observable.empty() |
-|from| 从一个数组、类数组对象、Promise、迭代器对象或者类Obeservable对象创建一个Observable(几乎可以把任何东西都能转化为Observable)| Rx.Observable.from([1,2,3])|
-|fromEvent|创建一个来自于 DOM 事件，或者 Node 的 EventEmitter 事件或者其他事件的 Observable|let observable = Rx.Observable.from(button,'click');observable.subscribe(x => console.log(x))| 给button绑定click事件，点击button输出event
+|create| 创建一个新的 Observable | Rx.Observable.create((observer) => {...}) | | |
+|empty| 创建一个什么数据都不发出并且立马完成的Observable| Rx.Observable.empty() | | |
+|from| 从一个数组、类数组对象、Promise、迭代器对象或者类Obeservable对象创建一个Observable(几乎可以把任何东西都能转化为Observable)| Rx.Observable.from([1,2,3])| |
+|fromEvent|创建一个来自于 DOM 事件，或者 Node 的 EventEmitter 事件或者其他事件的 Observable|let observable = Rx.Observable.from(button,'click');observable.subscribe(x => console.log(x))| 给button绑定click事件，点击button输出event||
 |fromPromise|将promise转换为Observable| let observable = Rx.Observable.fromPromise(Promise.resolve(2));observable.subscribe(x => console.log(x),err => console.error('err',err))| promise状态为成功态，所以输出2。如果是失败态，则输出'err2'
 |interval|创建一个 Observable ，该 Observable以指定时间间隔发出连续数字| let observable = Rx.Observable.interval(1000);observable.subscribe(x => console.log(x))|每隔1000毫秒发送一个数字(从0开始，无限发送)
 |merge|创建一个输出 Observable ，通过把多个 Observables 的值混合到一个 Observable 中来将其打平。| let observable ...;let observable1;Rx.Observable.merge(observable,observable1)|合并observable和observable
