@@ -1,13 +1,13 @@
-[什么是Rxjs?](#什么是rxjs)
-[基本概念](#基本概念)
-[特点](#特点)
-[值(Values)](#值values)
-[拉取(Pull) vs 推送(Push)](#拉取pull-vs-推送push)
-[Observable-可观察对象](#observable-可观察对象)
-[Observer-观察者](#observer-观察者)
-[Subscription-订阅](#subscription-订阅)
-[Operators-操作符](#operators-操作符)
-[安装](#安装)
+* [什么是Rxjs?](#什么是rxjs)
+* [基本概念](#基本概念)
+* [特点](#特点)
+* [值(Values)](#值values)
+* [拉取(Pull) vs 推送(Push)](#拉取pull-vs-推送push)
+* [Observable-可观察对象](#observable-可观察对象)
+* [Observer-观察者](#observer-观察者)
+* [Subscription-订阅](#subscription-订阅)
+* [Operators-操作符](#operators-操作符)
+* [安装](#安装)
 ## 什么是Rxjs?
 Rxjs是一个库，它通过使用observable序列来编写异步和基于事件的程序。它提供了一个核心类型`Observable`,附属类型
 (Observer、 Schedulers、 Subjects)和受[Array#extras] 启发的操作符 (map、filter、reduce、every, 等等)，这些数组操作符可以把异步事件作为集合来处理。
