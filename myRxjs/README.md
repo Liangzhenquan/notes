@@ -316,9 +316,6 @@ let observable1 = Observerble.of(1,2,3).map(count => count + '!!!')
 `.of(..)`操作符返回了一个observable(暂叫A),然后我们再在原基础（.of）后加一个操作符`.map(...)`，这时候也返回了一个observable(暂叫B)，这时候这两个observable(A和B)是不一样的
 ### 操作符分类
 根据不同的用途，操作符可以分为创建、转换、过滤、组合、错误处理、工具，等等，下面是一些常用的操作符，[详细请看](https://cn.rx.js.org/manual/overview.html#h213)
-|名称| 描述 | 示例 | 示例描述|
-| ---- | ---- | ---- | ---- |
-|123 |123|
 **创建操作符**
 
 |名称| 描述 | 示例 | 示例描述|
@@ -332,7 +329,9 @@ let observable1 = Observerble.of(1,2,3).map(count => count + '!!!')
 |merge|创建一个输出 Observable ，通过把多个 Observables 的值混合到一个 Observable 中来将其打平。| let observable ...;let observable1;Rx.Observable.merge(observable,observable1)|合并observable和observable
 |of|创建一个 Observable，它会依次发出由你提供的参数，最后发出完成通知。| let observable = Rx.Observable.of(1,2,3);observable.subscribe(x => console.log(x), () => {}, () => console.log('完成'))|当我们提供的参数1,2,3都发出后，就发送一个"Complete"通知，所以依次打印1,2,3,完成
 |range|闯将一个Observable,连续发送区间内的整数| let observable = Rx.Observable.range(1,10);observable.subscribe(x => console.log(x))|连续输出1,2...10|
+
 **转换操作符**
+
 |名称| 描述 | 示例 | 示例描述|
 | ---- | ---- | ---- | ---- |
 |groupBy|根据指定条件将源 Observable 发出的值进行分组，并将这些分组作为 GroupedObservables 发出，每一个分组都是一个 GroupedObservable|servable.of({id: 1, name:'jack'}, {id:2, name: 'tom'}, {id: 1, name: 'terry'}).groupBy(p => p.id)|将输入按照id进行分组，并输出2个GroupedObservables，两个GroupedObservables有个key属性分别为1和2|
@@ -340,8 +339,8 @@ let observable1 = Observerble.of(1,2,3).map(count => count + '!!!')
 |mapTo|每次源 Observble 发出值时，都在输出 Observable 上发出给定的常量值。类似于 map，但它每一次都把源值映射成同一个输出值。|Rx.Observable.fromEvent(document, 'click').mapTo('hi').subscribe(x=>console.log(x))
 |pluck|将每个源值(对象)映射成它指定的嵌套属性。类似于 map，但仅用于选择每个发出对象的某个嵌套属性。如果属性无法解析，它会返回 undefined 。|Rx.Observable.of({id: 1,name: 'jack'},{id: 2,name: 'jack'}).pluck('id').subscribe(x => console.log(x))|输出每一个对象的id，所以输出1,2
 |scan|对源 Observable 使用累加器函数， 返回生成的中间值， 可选的初始值。像是reduce， 但是会发出中间的累加值。|Observable.of({id: 1, name:'jack'}, {id:2, name: 'tom'}, {id: 1, name: 'terry'}).pluck('id').scan((acc,current) => acc +current,0).subscribe(x => console.log(x))|因为scan累加后发出中间值，所以是0+1,1+2,3+1，输出1,3,4|
-|
 **过滤操作符**
+
 |名称| 描述 | 示例 | 示例描述|
 | ---- | ---- | ---- | ---- |
 |debounce|只有在另一个 Observable 决定的一段特定时间经过后并且没有发出另一个源值之后，才从源 Observable 中发出一个值。相对于防抖|Observable.from(button,'click').debounce(() => Observable.interval(1000)).subscribe(x => console.log(1))|如果两次点击间隔大于1秒，则输出1，例：一阵狂点后，只有最后一次点击完成1秒后才会输出1|
@@ -354,21 +353,27 @@ let observable1 = Observerble.of(1,2,3).map(count => count + '!!!')
 |take|只发出源 Observable 最初发出的的N个值 (N = count)。|Observable.interval(1000).take(3).subscribe(x => console.log(x))|只发出前三个，所以输出0,1,2|
 |throttle|从源 Observable 中发出一个值，然后在由另一个 Observable 决定的期间内忽略 节流效果|Observable.fromEvent(btnRef.current, 'click').throttle(() => Observable.interval(1000)).subscribe(x => console.log(x))|狂点按钮，以每1000毫秒最多一次的频率打印x|
 |throttleTime|从源 Observable 中发出一个值，然后在 duration 毫秒内忽略随后发出的源值， 然后重复此过程。节流效果|Observable.fromEvent(btnRef.current, 'click').throttleTime(1000)).subscribe(x => console.log(x))|狂点按钮，以每1000毫秒最多一次的频率打印x|
+
 **组合操作符**
+
 |名称| 描述 | 示例 | 示例描述|
 | ---- | ---- | ---- | ---- |
 |merge|创建一个输出 Observable ，它可以同时发出每个给定的输入 Observable 中的所有值|let observable1...;let observable2;let myMerge = observable1.merge(observable2);myMerge.subscribe(x => console.log(1)) |合并两个observable|
 |mergeMap|将每个源值投射成 Observable ，该 Observable 会合并到输出 Observable 中|Observable.of({id: 1,name: 'merry'}...).groupBy(p => p.id).mergeMap(g => g.reduce).subscribe(x => console.log(x))|依次打印:[{id: 1...},{id: 1}],[{id: 2...},{id: 2...}]...
 |startWith|返回的 Observable 会先发出作为参数指定的项，然后再发出由源 Observable 所发出的项。|Observable.interval(1000).startWith(5).subscribe(x => console.log(x))|先输出5，而后每秒输出一个数字，0,1,2,3,...|
 |zip|将多个 Observable 组合以创建一个 Observable，该 Observable 的值是由所有输入 Observables 的值按顺序计算而来的。|
+
 **条件和布尔操作符**
+
 |名称| 描述 | 示例 | 示例描述|
 | ---- | ---- | ---- | ---- |
 |every|返回的 Observable 发出是否源 Observable 的每项都满足指定的条件。|Observable.of(1,23,5,10).every(x => x > 0).subscribe(x => console.log(x))|所有数字都大于0，所以打印true|
 |find|只发出源 Observable 所发出的值中第一个满足条件的值。|Observable.of(1,23,5,10).find(x => x%5 === 0).subscribe(x => console.log(x))|第一个满足条件的是5，所以输出5|
 |findIndex|只发出源 Observable 所发出的值中第一个满足条件的值的索引。|Observable.of(1,23,5,10).findIndex(x => x%5 === 0).subscribe(x => console.log(x))|第一天满足条件的5，索引是2，所以输出2|
 |isEmpty|如果源 Observable 是空的话，它返回一个发出 true 的 Observable，否则发出 false |Observable.of().isEmpty().subscribe(x => console.log(x))|源Observable是空，所以打印true|
+
 **数学和聚合操作符**
+
 |名称| 描述 | 示例 | 示例描述|
 | ---- | ---- | ---- | ---- |
 |count|计算源的发送数量，并当源完成时发出该数值。如果接受参数，输出则表示源值中满足函数的值的数量。|Observable.of(1,2,3,5).count().subscribe(x => console.log(x));Observable.of(1,2,3,5).count(x => x > 2).subscribe(x => console.log(x))|前者输出4，后者接受一个函数作为参数，则输出满足函数条件的个数，满足x > 2的个数有3,5,所以输出2|
