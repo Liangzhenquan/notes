@@ -1,1081 +1,0 @@
-bplist00Ò_WebMainResource_WebSubresourcesÕ	
-_WebResourceTextEncodingName^WebResourceURL_WebResourceFrameName_WebResourceData_WebResourceMIMETypeUUTF-8_http://codeguide.bootcss.com/PO§À<!DOCTYPE html><html lang="zh-cn"><head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <link href="public/ico/favicon.ico" rel="shortcut icon" type="image/x-icon">
-
-    <title>
-      ç¼–ç è§„èŒƒ by @mdo
-    </title>
-
-    <link rel="stylesheet" href="code-guide.css">
-    <link rel="stylesheet" href="chinese.css">
-  </head>
-  <body>
-
-    <header class="masthead">
-  <div class="container">
-    <span class="icon">âœ</span>
-    <h1>ç¼–ç è§„èŒƒ by @mdo</h1>
-    <p class="lead">ç¼–å†™çµæ´»ã€ç¨³å®šã€é«˜è´¨é‡çš„ HTML å’Œ CSS ä»£ç çš„è§„èŒƒã€‚</p>
-
-    <p class="masthead-links">
-      <a href="https://github.com/mdo/code-guide">
-        <span class="icon icon-github-circled"></span>
-      </a>
-      <a href="https://twitter.com/mdo">
-        <span class="icon icon-twitter"></span>
-      </a>
-    </p>
-  </div>
-</header>
-
-
-    <div class="heading" id="toc">
-  <h2>ç›®å½•</h2>
-</div>
-<div class="section toc">
-  <div class="col">
-    <h4><a href="#html">HTML</a></h4>
-    <ul>
-      <li><a href="#html-syntax">è¯­æ³•</a></li>
-      <li><a href="#html-doctype">HTML5 doctype</a></li>
-      <li><a href="#html-lang">è¯­è¨€å±æ€§ï¼ˆLanguage attributeï¼‰</a></li>
-      <li><a href="#html-encoding">å­—ç¬¦ç¼–ç </a></li>
-      <li><a href="#html-ie-compatibility-mode">IE å…¼å®¹æ¨¡å¼</a></li>
-      <li><a href="#html-style-script">å¼•å…¥ CSS å’Œ JavaScript æ–‡ä»¶</a></li>
-      <li><a href="#html-practicality">å®ç”¨ä¸ºç‹</a></li>
-      <li><a href="#html-attribute-order">å±æ€§é¡ºåº</a></li>
-      <li><a href="#html-boolean-attributes">å¸ƒå°”ï¼ˆbooleanï¼‰å‹å±æ€§</a></li>
-      <li><a href="#html-reducing-markup">å‡å°‘æ ‡ç­¾çš„æ•°é‡</a></li>
-      <li><a href="#html-javascript">JavaScript ç”Ÿæˆçš„æ ‡ç­¾</a></li>
-    </ul>
-  </div>
-  <div class="col">
-    <h4><a href="#css">CSS</a></h4>
-    <ul>
-      <li><a href="#css-syntax">è¯­æ³•</a></li>
-      <li><a href="#css-declaration-order">å£°æ˜é¡ºåº</a></li>
-      <li><a href="#css-media-queries">åª’ä½“æŸ¥è¯¢ï¼ˆMedia queryï¼‰çš„ä½ç½®</a></li>
-      <li><a href="#css-prefixed-properties">å¸¦å‰ç¼€çš„å±æ€§</a></li>
-      <li><a href="#css-single-declarations">å•è¡Œè§„åˆ™å£°æ˜</a></li>
-      <li><a href="#css-shorthand">ç®€å†™å½¢å¼çš„å±æ€§å£°æ˜</a></li>
-      <li><a href="#css-nesting">Less å’Œ Sass ä¸­çš„åµŒå¥—</a></li>
-      <li><a href="#css-comments">æ³¨é‡Š</a></li>
-      <li><a href="#css-classes">class å‘½å</a></li>
-      <li><a href="#css-selectors">é€‰æ‹©å™¨</a></li>
-      <li><a href="#css-organization">ä»£ç ç»„ç»‡</a></li>
-    </ul>
-  </div>
-</div>
-
-
-<div class="section" id="golden-rule">
-  <div class="col">
-    <h2>é»„é‡‘å®šå¾‹</h2>
-    <p>æ°¸è¿œéµå¾ªåŒä¸€å¥—ç¼–ç è§„èŒƒ -- å¯ä»¥æ˜¯è¿™é‡Œåˆ—å‡ºçš„ï¼Œä¹Ÿå¯ä»¥æ˜¯ä½ è‡ªå·±æ€»ç»“çš„ã€‚å¦‚æœä½ å‘ç°æœ¬è§„èŒƒä¸­æœ‰ä»»ä½•é”™è¯¯ï¼Œæ•¬è¯·æŒ‡æ­£ã€‚é€šè¿‡ <a href="https://github.com/mdo/code-guide/issues/new">open an issue on GitHub</a>ä¸ºæœ¬è§„èŒƒæ·»åŠ æˆ–è´¡çŒ®å†…å®¹ã€‚</p>
-  </div>
-  <div class="col">
-    <blockquote>
-      <p>ä¸ç®¡æœ‰å¤šå°‘äººå…±åŒå‚ä¸åŒä¸€é¡¹ç›®ï¼Œä¸€å®šè¦ç¡®ä¿æ¯ä¸€è¡Œä»£ç éƒ½åƒæ˜¯åŒä¸€ä¸ªäººç¼–å†™çš„ã€‚</p>
-    </blockquote>
-  </div>
-</div>
-
-
-
-<div class="heading" id="html">
-  <h2>HTML</h2>
-</div>
-
-<div class="section" id="html-syntax">
-  <div class="col">
-    <h3>è¯­æ³•</h3>
-    <ul>
-      <li>ç”¨ä¸¤ä¸ªç©ºæ ¼æ¥ä»£æ›¿åˆ¶è¡¨ç¬¦ï¼ˆtabï¼‰ -- è¿™æ˜¯å”¯ä¸€èƒ½ä¿è¯åœ¨æ‰€æœ‰ç¯å¢ƒä¸‹è·å¾—ä¸€è‡´å±•ç°çš„æ–¹æ³•ã€‚</li>
-      <li>åµŒå¥—å…ƒç´ åº”å½“ç¼©è¿›ä¸€æ¬¡ï¼ˆå³ä¸¤ä¸ªç©ºæ ¼ï¼‰ã€‚</li>
-      <li>å¯¹äºå±æ€§çš„å®šä¹‰ï¼Œç¡®ä¿å…¨éƒ¨ä½¿ç”¨åŒå¼•å·ï¼Œç»ä¸è¦ä½¿ç”¨å•å¼•å·ã€‚</li>
-      <li>ä¸è¦åœ¨è‡ªé—­åˆï¼ˆself-closingï¼‰å…ƒç´ çš„å°¾éƒ¨æ·»åŠ æ–œçº¿ -- <a href="http://dev.w3.org/html5/spec-author-view/syntax.html#syntax-start-tag">HTML5 è§„èŒƒ</a>ä¸­æ˜ç¡®è¯´æ˜è¿™æ˜¯å¯é€‰çš„ã€‚</li>
-      <li>ä¸è¦çœç•¥å¯é€‰çš„ç»“æŸæ ‡ç­¾ï¼ˆclosing tagï¼‰ï¼ˆä¾‹å¦‚ï¼Œ<code>&lt;/li&gt;</code> æˆ– <code>&lt;/body&gt;</code>ï¼‰ã€‚</li>
-    </ul>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Page title<span class="nt">&lt;/title&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"images/company-logo.png"</span> <span class="na">alt=</span><span class="s">"Company"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"hello-world"</span><span class="nt">&gt;</span>Hello, world!<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="html-doctype">
-  <div class="col">
-    <h3>HTML5 doctype</h3>
-    <p>ä¸ºæ¯ä¸ª HTML é¡µé¢çš„ç¬¬ä¸€è¡Œæ·»åŠ æ ‡å‡†æ¨¡å¼ï¼ˆstandard modeï¼‰çš„å£°æ˜ï¼Œè¿™æ ·èƒ½å¤Ÿç¡®ä¿åœ¨æ¯ä¸ªæµè§ˆå™¨ä¸­æ‹¥æœ‰ä¸€è‡´çš„å±•ç°ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="html-lang">
-  <div class="col">
-    <h3>è¯­è¨€å±æ€§</h3>
-    <p>æ ¹æ® HTML5 è§„èŒƒï¼š</p>
-    <blockquote>
-      <p>å¼ºçƒˆå»ºè®®ä¸º html æ ¹å…ƒç´ æŒ‡å®š lang å±æ€§ï¼Œä»è€Œä¸ºæ–‡æ¡£è®¾ç½®æ­£ç¡®çš„è¯­è¨€ã€‚è¿™å°†æœ‰åŠ©äºè¯­éŸ³åˆæˆå·¥å…·ç¡®å®šå…¶æ‰€åº”è¯¥é‡‡ç”¨çš„å‘éŸ³ï¼Œæœ‰åŠ©äºç¿»è¯‘å·¥å…·ç¡®å®šå…¶ç¿»è¯‘æ—¶æ‰€åº”éµå®ˆçš„è§„åˆ™ç­‰ç­‰ã€‚</p>
-    </blockquote>
-    <p>æ›´å¤šå…³äº <code>lang</code> å±æ€§çš„çŸ¥è¯†å¯ä»¥ä» <a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-html-element">æ­¤è§„èŒƒ</a> ä¸­äº†è§£ã€‚</p>
-    <p>è¿™é‡Œåˆ—å‡ºäº†<a href="http://reference.sitepoint.com/html/lang-codes">è¯­è¨€ä»£ç è¡¨</a>ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"zh-CN"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- ... --&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="html-ie-compatibility-mode">
-  <div class="col">
-    <h3>IE å…¼å®¹æ¨¡å¼</h3>
-    <p>IE æ”¯æŒé€šè¿‡ç‰¹å®šçš„ <code>&lt;meta&gt;</code> æ ‡ç­¾æ¥ç¡®å®šç»˜åˆ¶å½“å‰é¡µé¢æ‰€åº”è¯¥é‡‡ç”¨çš„ IE ç‰ˆæœ¬ã€‚é™¤éæœ‰å¼ºçƒˆçš„ç‰¹æ®Šéœ€æ±‚ï¼Œå¦åˆ™æœ€å¥½æ˜¯è®¾ç½®ä¸º <strong>edge mode</strong>ï¼Œä»è€Œé€šçŸ¥ IE é‡‡ç”¨å…¶æ‰€æ”¯æŒçš„æœ€æ–°çš„æ¨¡å¼ã€‚</p>
-    <p><a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge-e">é˜…è¯»è¿™ç¯‡ stack overflow ä¸Šçš„æ–‡ç« </a>å¯ä»¥è·å¾—æ›´å¤šæœ‰ç”¨çš„ä¿¡æ¯ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=Edge"</span><span class="nt">&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="html-encoding">
-  <div class="col">
-    <h3>å­—ç¬¦ç¼–ç </h3>
-    <p>é€šè¿‡æ˜ç¡®å£°æ˜å­—ç¬¦ç¼–ç ï¼Œèƒ½å¤Ÿç¡®ä¿æµè§ˆå™¨å¿«é€Ÿå¹¶å®¹æ˜“çš„åˆ¤æ–­é¡µé¢å†…å®¹çš„æ¸²æŸ“æ–¹å¼ã€‚è¿™æ ·åšçš„å¥½å¤„æ˜¯ï¼Œå¯ä»¥é¿å…åœ¨ HTML ä¸­ä½¿ç”¨å­—ç¬¦å®ä½“æ ‡è®°ï¼ˆcharacter entityï¼‰ï¼Œä»è€Œå…¨éƒ¨ä¸æ–‡æ¡£ç¼–ç ä¸€è‡´ï¼ˆä¸€èˆ¬é‡‡ç”¨ UTF-8 ç¼–ç ï¼‰ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="html-style-script">
-  <div class="col">
-    <h3>å¼•å…¥ CSS å’Œ JavaScript æ–‡ä»¶</h3>
-    <p>æ ¹æ® HTML5 è§„èŒƒï¼Œåœ¨å¼•å…¥ CSS å’Œ JavaScript æ–‡ä»¶æ—¶ä¸€èˆ¬ä¸éœ€è¦æŒ‡å®š <code>type</code> å±æ€§ï¼Œå› ä¸º <code>text/css</code> å’Œ <code>text/javascript</code> åˆ†åˆ«æ˜¯å®ƒä»¬çš„é»˜è®¤å€¼ã€‚</p>
-    <h4>HTML5 spec links</h4>
-    <ul>
-      <li><a href="http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-link-element">Using link</a></li>
-      <li><a href="http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-style-element">Using style</a></li>
-      <li><a href="http://www.w3.org/TR/2011/WD-html5-20110525/scripting-1.html#the-script-element">Using script</a></li>
-    </ul>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="c">&lt;!-- External CSS --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"code-guide.css"</span><span class="nt">&gt;</span>
-
-<span class="c">&lt;!-- In-document CSS --&gt;</span>
-<span class="nt">&lt;style&gt;</span>
-  <span class="c">/* ... */</span>
-<span class="nt">&lt;/style&gt;</span>
-
-<span class="c">&lt;!-- JavaScript --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"code-guide.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="html-practicality">
-  <div class="col">
-    <h3>å®ç”¨ä¸ºç‹</h3>
-    <p>å°½é‡éµå¾ª HTML æ ‡å‡†å’Œè¯­ä¹‰ï¼Œä½†æ˜¯ä¸è¦ä»¥ç‰ºç‰²å®ç”¨æ€§ä¸ºä»£ä»·ã€‚ä»»ä½•æ—¶å€™éƒ½è¦å°½é‡ä½¿ç”¨æœ€å°‘çš„æ ‡ç­¾å¹¶ä¿æŒæœ€å°çš„å¤æ‚åº¦ã€‚</p>
-  </div>
-</div>
-
-<div class="section" id="html-attribute-order">
-  <div class="col">
-    <h3>å±æ€§é¡ºåº</h3>
-    <p>HTML å±æ€§åº”å½“æŒ‰ç…§ä»¥ä¸‹ç»™å‡ºçš„é¡ºåºä¾æ¬¡æ’åˆ—ï¼Œç¡®ä¿ä»£ç çš„æ˜“è¯»æ€§ã€‚</p>
-    <ul>
-      <li><code>class</code></li>
-      <li><code>id</code>, <code>name</code></li>
-      <li><code>data-*</code></li>
-      <li><code>src</code>, <code>for</code>, <code>type</code>, <code>href</code></li>
-      <li><code>title</code>, <code>alt</code></li>
-      <li><code>aria-*</code>, <code>role</code></li>
-    </ul>
-    <p>class ç”¨äºæ ‡è¯†é«˜åº¦å¯å¤ç”¨ç»„ä»¶ï¼Œå› æ­¤åº”è¯¥æ’åœ¨é¦–ä½ã€‚id ç”¨äºæ ‡è¯†å…·ä½“ç»„ä»¶ï¼Œåº”å½“è°¨æ…ä½¿ç”¨ï¼ˆä¾‹å¦‚ï¼Œé¡µé¢å†…çš„ä¹¦ç­¾ï¼‰ï¼Œå› æ­¤æ’åœ¨ç¬¬äºŒä½ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"..."</span> <span class="na">id=</span><span class="s">"..."</span> <span class="na">data-modal=</span><span class="s">"toggle"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-  Example link
-<span class="nt">&lt;/a&gt;</span>
-
-<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
-
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="html-boolean-attributes">
-  <div class="col">
-    <h3>å¸ƒå°”ï¼ˆbooleanï¼‰å‹å±æ€§</h3>
-    <p>å¸ƒå°”å‹å±æ€§å¯ä»¥åœ¨å£°æ˜æ—¶ä¸èµ‹å€¼ã€‚XHTML è§„èŒƒè¦æ±‚ä¸ºå…¶èµ‹å€¼ï¼Œä½†æ˜¯ HTML5 è§„èŒƒä¸éœ€è¦ã€‚</p>
-    <p>æ›´å¤šä¿¡æ¯è¯·å‚è€ƒ <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/common-microsyntaxes.html#boolean-attributes">WhatWG section on boolean attributes</a>ï¼š</p>
-    <blockquote>
-      <p>å…ƒç´ çš„å¸ƒå°”å‹å±æ€§å¦‚æœæœ‰å€¼ï¼Œå°±æ˜¯ trueï¼Œå¦‚æœæ²¡æœ‰å€¼ï¼Œå°±æ˜¯ falseã€‚</p>
-    </blockquote>
-    <p>å¦‚æœ<em>ä¸€å®š</em>è¦ä¸ºå…¶èµ‹å€¼çš„è¯ï¼Œè¯·å‚è€ƒ WhatWG è§„èŒƒï¼š</p>
-    <blockquote>
-      <p>å¦‚æœå±æ€§å­˜åœ¨ï¼Œå…¶å€¼å¿…é¡»æ˜¯ç©ºå­—ç¬¦ä¸²æˆ– [...] å±æ€§çš„è§„èŒƒåç§°ï¼Œå¹¶ä¸”ä¸è¦å†æ”¶å°¾æ·»åŠ ç©ºç™½ç¬¦ã€‚</p>
-    </blockquote>
-    <p><strong>ç®€å•æ¥è¯´ï¼Œå°±æ˜¯ä¸ç”¨èµ‹å€¼ã€‚</strong></p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">disabled</span><span class="nt">&gt;</span>
-
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"1"</span> <span class="na">checked</span><span class="nt">&gt;</span>
-
-<span class="nt">&lt;select&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span> <span class="na">selected</span><span class="nt">&gt;</span>1<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="html-reducing-markup">
-  <div class="col">
-    <h3>å‡å°‘æ ‡ç­¾çš„æ•°é‡</h3>
-    <p>ç¼–å†™ HTML ä»£ç æ—¶ï¼Œå°½é‡é¿å…å¤šä½™çš„çˆ¶å…ƒç´ ã€‚å¾ˆå¤šæ—¶å€™ï¼Œè¿™éœ€è¦è¿­ä»£å’Œé‡æ„æ¥å®ç°ã€‚è¯·çœ‹ä¸‹é¢çš„æ¡ˆä¾‹ï¼š</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="c">&lt;!-- Not so great --&gt;</span>
-<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"avatar"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/span&gt;</span>
-
-<span class="c">&lt;!-- Better --&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"avatar"</span> <span class="na">src=</span><span class="s">"..."</span><span class="nt">&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="html-javascript">
-  <div class="col">
-    <h3>JavaScript ç”Ÿæˆçš„æ ‡ç­¾</h3>
-    <p>é€šè¿‡ JavaScript ç”Ÿæˆçš„æ ‡ç­¾è®©å†…å®¹å˜å¾—ä¸æ˜“æŸ¥æ‰¾ã€ç¼–è¾‘ï¼Œå¹¶ä¸”é™ä½æ€§èƒ½ã€‚èƒ½é¿å…æ—¶å°½é‡é¿å…ã€‚</p>
-  </div>
-</div>
-
-
-
-<div class="heading" id="css">
-  <h2>CSS</h2>
-</div>
-
-<div class="section" id="css-syntax">
-  <div class="col">
-    <h3>è¯­æ³•</h3>
-    <ul>
-      <li>ç”¨ä¸¤ä¸ªç©ºæ ¼æ¥ä»£æ›¿åˆ¶è¡¨ç¬¦ï¼ˆtabï¼‰ -- è¿™æ˜¯å”¯ä¸€èƒ½ä¿è¯åœ¨æ‰€æœ‰ç¯å¢ƒä¸‹è·å¾—ä¸€è‡´å±•ç°çš„æ–¹æ³•ã€‚</li>
-      <li>ä¸ºé€‰æ‹©å™¨åˆ†ç»„æ—¶ï¼Œå°†å•ç‹¬çš„é€‰æ‹©å™¨å•ç‹¬æ”¾åœ¨ä¸€è¡Œã€‚</li>
-      <li>ä¸ºäº†ä»£ç çš„æ˜“è¯»æ€§ï¼Œåœ¨æ¯ä¸ªå£°æ˜å—çš„å·¦èŠ±æ‹¬å·å‰æ·»åŠ ä¸€ä¸ªç©ºæ ¼ã€‚</li>
-      <li>å£°æ˜å—çš„å³èŠ±æ‹¬å·åº”å½“å•ç‹¬æˆè¡Œã€‚</li>
-      <li>æ¯æ¡å£°æ˜è¯­å¥çš„ <code>:</code> ååº”è¯¥æ’å…¥ä¸€ä¸ªç©ºæ ¼ã€‚</li>
-      <li>ä¸ºäº†è·å¾—æ›´å‡†ç¡®çš„é”™è¯¯æŠ¥å‘Šï¼Œæ¯æ¡å£°æ˜éƒ½åº”è¯¥ç‹¬å ä¸€è¡Œã€‚</li>
-      <li>æ‰€æœ‰å£°æ˜è¯­å¥éƒ½åº”å½“ä»¥åˆ†å·ç»“å°¾ã€‚æœ€åä¸€æ¡å£°æ˜è¯­å¥åé¢çš„åˆ†å·æ˜¯å¯é€‰çš„ï¼Œä½†æ˜¯ï¼Œå¦‚æœçœç•¥è¿™ä¸ªåˆ†å·ï¼Œä½ çš„ä»£ç å¯èƒ½æ›´æ˜“å‡ºé”™ã€‚</li>
-      <li>å¯¹äºä»¥é€—å·åˆ†éš”çš„å±æ€§å€¼ï¼Œæ¯ä¸ªé€—å·åé¢éƒ½åº”è¯¥æ’å…¥ä¸€ä¸ªç©ºæ ¼ï¼ˆä¾‹å¦‚ï¼Œ<code>box-shadow</code>ï¼‰ã€‚</li>
-      <li>ä¸è¦åœ¨ <code>rgb()</code>ã€<code>rgba()</code>ã€<code>hsl()</code>ã€<code>hsla()</code> æˆ– <code>rect()</code> å€¼çš„<em>å†…éƒ¨</em>çš„é€—å·åé¢æ’å…¥ç©ºæ ¼ã€‚è¿™æ ·åˆ©äºä»å¤šä¸ªå±æ€§å€¼ï¼ˆæ—¢åŠ é€—å·ä¹ŸåŠ ç©ºæ ¼ï¼‰ä¸­åŒºåˆ†å¤šä¸ªé¢œè‰²å€¼ï¼ˆåªåŠ é€—å·ï¼Œä¸åŠ ç©ºæ ¼ï¼‰ã€‚</li>
-      <li>å¯¹äºå±æ€§å€¼æˆ–é¢œè‰²å‚æ•°ï¼Œçœç•¥å°äº 1 çš„å°æ•°å‰é¢çš„ 0 ï¼ˆä¾‹å¦‚ï¼Œ<code>.5</code> ä»£æ›¿ <code>0.5</code>ï¼›<code>-.5px</code> ä»£æ›¿ <code>-0.5px</code>ï¼‰ã€‚</li>
-      <li>åå…­è¿›åˆ¶å€¼åº”è¯¥å…¨éƒ¨å°å†™ï¼Œä¾‹å¦‚ï¼Œ<code>#fff</code>ã€‚åœ¨æ‰«ææ–‡æ¡£æ—¶ï¼Œå°å†™å­—ç¬¦æ˜“äºåˆ†è¾¨ï¼Œå› ä¸ºä»–ä»¬çš„å½¢å¼æ›´æ˜“äºåŒºåˆ†ã€‚</li>
-      <li>å°½é‡ä½¿ç”¨ç®€å†™å½¢å¼çš„åå…­è¿›åˆ¶å€¼ï¼Œä¾‹å¦‚ï¼Œç”¨ <code>#fff</code> ä»£æ›¿ <code>#ffffff</code>ã€‚</li>
-      <li>ä¸ºé€‰æ‹©å™¨ä¸­çš„å±æ€§æ·»åŠ åŒå¼•å·ï¼Œä¾‹å¦‚ï¼Œ<code>input[type="text"]</code>ã€‚<a href="http://mathiasbynens.be/notes/unquoted-attribute-values#css">åªæœ‰åœ¨æŸäº›æƒ…å†µä¸‹æ˜¯å¯é€‰çš„</a>ï¼Œä½†æ˜¯ï¼Œä¸ºäº†ä»£ç çš„ä¸€è‡´æ€§ï¼Œå»ºè®®éƒ½åŠ ä¸ŠåŒå¼•å·ã€‚</li>
-      <li>é¿å…ä¸º 0 å€¼æŒ‡å®šå•ä½ï¼Œä¾‹å¦‚ï¼Œç”¨ <code>margin: 0;</code> ä»£æ›¿ <code>margin: 0px;</code>ã€‚</li>
-    </ul>
-    <p>å¯¹äºè¿™é‡Œç”¨åˆ°çš„æœ¯è¯­æœ‰ç–‘é—®å—ï¼Ÿè¯·å‚è€ƒ Wikipedia ä¸Šçš„ <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets#Syntax">syntax section of the Cascading Style Sheets article</a>ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="c">/* Bad CSS */</span>
-<span class="nc">.selector</span><span class="o">,</span> <span class="nc">.selector-secondary</span><span class="o">,</span> <span class="nc">.selector</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span> <span class="p">{</span>
-  <span class="k">padding</span><span class="o">:</span><span class="m">15px</span><span class="p">;</span>
-  <span class="k">margin</span><span class="o">:</span><span class="m">0px</span> <span class="m">0px</span> <span class="m">15px</span><span class="p">;</span>
-  <span class="k">background-color</span><span class="o">:</span><span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">);</span>
-  <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="m">0px</span> <span class="m">1px</span> <span class="m">2px</span> <span class="m">#CCC</span><span class="o">,</span><span class="k">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">0</span> <span class="m">#FFFFFF</span>
-<span class="p">}</span>
-
-<span class="c">/* Good CSS */</span>
-<span class="nc">.selector</span><span class="o">,</span>
-<span class="nc">.selector-secondary</span><span class="o">,</span>
-<span class="nc">.selector</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"text"</span><span class="o">]</span> <span class="p">{</span>
-  <span class="k">padding</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
-  <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
-  <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,.</span><span class="m">5</span><span class="p">);</span>
-  <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">2px</span> <span class="m">#ccc</span><span class="o">,</span> <span class="k">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">0</span> <span class="m">#fff</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-declaration-order">
-  <div class="col">
-    <h3>å£°æ˜é¡ºåº</h3>
-    <p>ç›¸å…³çš„å±æ€§å£°æ˜åº”å½“å½’ä¸ºä¸€ç»„ï¼Œå¹¶æŒ‰ç…§ä¸‹é¢çš„é¡ºåºæ’åˆ—ï¼š</p>
-    <ol>
-      <li>Positioning</li>
-      <li>Box model</li>
-      <li>Typographic</li>
-      <li>Visual</li>
-    </ol>
-    <p>ç”±äºå®šä½ï¼ˆpositioningï¼‰å¯ä»¥ä»æ­£å¸¸çš„æ–‡æ¡£æµä¸­ç§»é™¤å…ƒç´ ï¼Œå¹¶ä¸”è¿˜èƒ½è¦†ç›–ç›’æ¨¡å‹ï¼ˆbox modelï¼‰ç›¸å…³çš„æ ·å¼ï¼Œå› æ­¤æ’åœ¨é¦–ä½ã€‚ç›’æ¨¡å‹æ’åœ¨ç¬¬äºŒä½ï¼Œå› ä¸ºå®ƒå†³å®šäº†ç»„ä»¶çš„å°ºå¯¸å’Œä½ç½®ã€‚</p>
-    <p>å…¶ä»–å±æ€§åªæ˜¯å½±å“ç»„ä»¶çš„<em>å†…éƒ¨ï¼ˆinsideï¼‰</em>æˆ–è€…æ˜¯ä¸å½±å“å‰ä¸¤ç»„å±æ€§ï¼Œå› æ­¤æ’åœ¨åé¢ã€‚</p>
-    <p>å®Œæ•´çš„å±æ€§åˆ—è¡¨åŠå…¶æ’åˆ—é¡ºåºè¯·å‚è€ƒ <a href="http://twitter.github.com/recess">Recess</a>ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="nc">.declaration-order</span> <span class="p">{</span>
-  <span class="c">/* Positioning */</span>
-  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
-  <span class="k">top</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-  <span class="k">right</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-  <span class="k">bottom</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-  <span class="k">left</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
-  <span class="k">z-index</span><span class="o">:</span> <span class="m">100</span><span class="p">;</span>
-
-  <span class="c">/* Box-model */</span>
-  <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span>
-  <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span>
-  <span class="k">width</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
-  <span class="k">height</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
-
-  <span class="c">/* Typography */</span>
-  <span class="k">font</span><span class="o">:</span> <span class="k">normal</span> <span class="m">13px</span> <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="k">sans-serif</span><span class="p">;</span>
-  <span class="k">line-height</span><span class="o">:</span> <span class="m">1</span><span class="o">.</span><span class="m">5</span><span class="p">;</span>
-  <span class="k">color</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span>
-  <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
-
-  <span class="c">/* Visual */</span>
-  <span class="k">background-color</span><span class="o">:</span> <span class="m">#f5f5f5</span><span class="p">;</span>
-  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#e5e5e5</span><span class="p">;</span>
-  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">3px</span><span class="p">;</span>
-
-  <span class="c">/* Misc */</span>
-  <span class="k">opacity</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-import">
-  <div class="col">
-    <h3>ä¸è¦ä½¿ç”¨ <code>@import</code></h3>
-    <p>ä¸ <code>&lt;link&gt;</code> æ ‡ç­¾ç›¸æ¯”ï¼Œ<code>@import</code> æŒ‡ä»¤è¦æ…¢å¾ˆå¤šï¼Œä¸å…‰å¢åŠ äº†é¢å¤–çš„è¯·æ±‚æ¬¡æ•°ï¼Œè¿˜ä¼šå¯¼è‡´ä¸å¯é¢„æ–™çš„é—®é¢˜ã€‚æ›¿ä»£åŠæ³•æœ‰ä»¥ä¸‹å‡ ç§ï¼š</p>
-    <ul>
-      <li>ä½¿ç”¨å¤šä¸ª <code>&lt;link&gt;</code> å…ƒç´ </li>
-      <li>é€šè¿‡ Sass æˆ– Less ç±»ä¼¼çš„ CSS é¢„å¤„ç†å™¨å°†å¤šä¸ª CSS æ–‡ä»¶ç¼–è¯‘ä¸ºä¸€ä¸ªæ–‡ä»¶</li>
-      <li>é€šè¿‡ Railsã€Jekyll æˆ–å…¶ä»–ç³»ç»Ÿä¸­æä¾›è¿‡ CSS æ–‡ä»¶åˆå¹¶åŠŸèƒ½</li>
-    </ul>
-    <p>è¯·å‚è€ƒ <a href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/">Steve Souders çš„æ–‡ç« </a>äº†è§£æ›´å¤šçŸ¥è¯†ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="html"><span class="c">&lt;!-- Use link elements --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"core.css"</span><span class="nt">&gt;</span>
-
-<span class="c">&lt;!-- Avoid @imports --&gt;</span>
-<span class="nt">&lt;style&gt;</span>
-  <span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="s2">"more.css"</span><span class="o">)</span><span class="p">;</span>
-<span class="nt">&lt;/style&gt;</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-media-queries">
-  <div class="col">
-    <h3>åª’ä½“æŸ¥è¯¢ï¼ˆMedia queryï¼‰çš„ä½ç½®</h3>
-    <p>å°†åª’ä½“æŸ¥è¯¢æ”¾åœ¨å°½å¯èƒ½ç›¸å…³è§„åˆ™çš„é™„è¿‘ã€‚ä¸è¦å°†ä»–ä»¬æ‰“åŒ…æ”¾åœ¨ä¸€ä¸ªå•ä¸€æ ·å¼æ–‡ä»¶ä¸­æˆ–è€…æ”¾åœ¨æ–‡æ¡£åº•éƒ¨ã€‚å¦‚æœä½ æŠŠä»–ä»¬åˆ†å¼€äº†ï¼Œå°†æ¥åªä¼šè¢«å¤§å®¶é—å¿˜ã€‚ä¸‹é¢ç»™å‡ºä¸€ä¸ªå…¸å‹çš„å®ä¾‹ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="nc">.element</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.element-avatar</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.element-selected</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-
-<span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">480px</span><span class="o">)</span> <span class="p">{</span>
-  <span class="nc">.element</span> <span class="p">{</span> <span class="o">...</span><span class="p">}</span>
-  <span class="nc">.element-avatar</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-  <span class="nc">.element-selected</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-prefixed-properties">
-  <div class="col">
-    <h3>å¸¦å‰ç¼€çš„å±æ€§</h3>
-    <p>å½“ä½¿ç”¨ç‰¹å®šå‚å•†çš„å¸¦æœ‰å‰ç¼€çš„å±æ€§æ—¶ï¼Œé€šè¿‡ç¼©è¿›çš„æ–¹å¼ï¼Œè®©æ¯ä¸ªå±æ€§çš„å€¼åœ¨å‚ç›´æ–¹å‘å¯¹é½ï¼Œè¿™æ ·ä¾¿äºå¤šè¡Œç¼–è¾‘ã€‚</p>
-    <p>åœ¨ Textmate ä¸­ï¼Œä½¿ç”¨ <strong>Text â†’ Edit Each Line in Selection</strong> (âŒƒâŒ˜A)ã€‚åœ¨ Sublime Text 2 ä¸­ï¼Œä½¿ç”¨ <strong>Selection â†’ Add Previous Line</strong> (âŒƒâ‡§â†‘) å’Œ <strong>Selection â†’  Add Next Line</strong> (âŒƒâ‡§â†“)ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="c">/* Prefixed properties */</span>
-<span class="nc">.selector</span> <span class="p">{</span>
-  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">2px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,.</span><span class="m">15</span><span class="p">);</span>
-          <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">2px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,.</span><span class="m">15</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-single-declarations">
-  <div class="col">
-    <h3>å•è¡Œè§„åˆ™å£°æ˜</h3>
-    <p>å¯¹äº<strong>åªåŒ…å«ä¸€æ¡å£°æ˜</strong>çš„æ ·å¼ï¼Œä¸ºäº†æ˜“è¯»æ€§å’Œä¾¿äºå¿«é€Ÿç¼–è¾‘ï¼Œå»ºè®®å°†è¯­å¥æ”¾åœ¨åŒä¸€è¡Œã€‚å¯¹äºå¸¦æœ‰å¤šæ¡å£°æ˜çš„æ ·å¼ï¼Œè¿˜æ˜¯åº”å½“å°†å£°æ˜åˆ†ä¸ºå¤šè¡Œã€‚</p>
-    <p>è¿™æ ·åšçš„å…³é”®å› ç´ æ˜¯ä¸ºäº†é”™è¯¯æ£€æµ‹ -- ä¾‹å¦‚ï¼ŒCSS æ ¡éªŒå™¨æŒ‡å‡ºåœ¨ 183 è¡Œæœ‰è¯­æ³•é”™è¯¯ã€‚å¦‚æœæ˜¯å•è¡Œå•æ¡å£°æ˜ï¼Œä½ å°±ä¸ä¼šå¿½ç•¥è¿™ä¸ªé”™è¯¯ï¼›å¦‚æœæ˜¯å•è¡Œå¤šæ¡å£°æ˜çš„è¯ï¼Œä½ å°±è¦ä»”ç»†åˆ†æé¿å…æ¼æ‰é”™è¯¯äº†ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="c">/* Single declarations on one line */</span>
-<span class="nc">.span1</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">60px</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.span2</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">140px</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.span3</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">220px</span><span class="p">;</span> <span class="p">}</span>
-
-<span class="c">/* Multiple declarations, one per line */</span>
-<span class="nc">.sprite</span> <span class="p">{</span>
-  <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
-  <span class="k">width</span><span class="o">:</span> <span class="m">16px</span><span class="p">;</span>
-  <span class="k">height</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
-  <span class="k">background-image</span><span class="o">:</span> <span class="sx">url(../img/sprite.png)</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nc">.icon</span>           <span class="p">{</span> <span class="k">background-position</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.icon-home</span>      <span class="p">{</span> <span class="k">background-position</span><span class="o">:</span> <span class="m">0</span> <span class="m">-20px</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.icon-account</span>   <span class="p">{</span> <span class="k">background-position</span><span class="o">:</span> <span class="m">0</span> <span class="m">-40px</span><span class="p">;</span> <span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-shorthand">
-  <div class="col">
-    <h3>ç®€å†™å½¢å¼çš„å±æ€§å£°æ˜</h3>
-    <p>åœ¨éœ€è¦æ˜¾ç¤ºåœ°è®¾ç½®æ‰€æœ‰å€¼çš„æƒ…å†µä¸‹ï¼Œåº”å½“å°½é‡é™åˆ¶ä½¿ç”¨ç®€å†™å½¢å¼çš„å±æ€§å£°æ˜ã€‚å¸¸è§çš„æ»¥ç”¨ç®€å†™å±æ€§å£°æ˜çš„æƒ…å†µå¦‚ä¸‹ï¼š</p>
-    <ul>
-      <li><code>padding</code></li>
-      <li><code>margin</code></li>
-      <li><code>font</code></li>
-      <li><code>background</code></li>
-      <li><code>border</code></li>
-      <li><code>border-radius</code></li>
-    </ul>
-    <p>å¤§éƒ¨åˆ†æƒ…å†µä¸‹ï¼Œæˆ‘ä»¬ä¸éœ€è¦ä¸ºç®€å†™å½¢å¼çš„å±æ€§å£°æ˜æŒ‡å®šæ‰€æœ‰å€¼ã€‚ä¾‹å¦‚ï¼ŒHTML çš„ heading å…ƒç´ åªéœ€è¦è®¾ç½®ä¸Šã€ä¸‹è¾¹è·ï¼ˆmarginï¼‰çš„å€¼ï¼Œå› æ­¤ï¼Œåœ¨å¿…è¦çš„æ—¶å€™ï¼Œåªéœ€è¦†ç›–è¿™ä¸¤ä¸ªå€¼å°±å¯ä»¥ã€‚è¿‡åº¦ä½¿ç”¨ç®€å†™å½¢å¼çš„å±æ€§å£°æ˜ä¼šå¯¼è‡´ä»£ç æ··ä¹±ï¼Œå¹¶ä¸”ä¼šå¯¹å±æ€§å€¼å¸¦æ¥ä¸å¿…è¦çš„è¦†ç›–ä»è€Œå¼•èµ·æ„å¤–çš„å‰¯ä½œç”¨ã€‚</p>
-    <p>MDNï¼ˆMozilla Developer Networkï¼‰ä¸Šä¸€ç‰‡éå¸¸å¥½çš„å…³äº<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties">shorthand properties</a> çš„æ–‡ç« ï¼Œå¯¹äºä¸å¤ªç†Ÿæ‚‰ç®€å†™å±æ€§å£°æ˜åŠå…¶è¡Œä¸ºçš„ç”¨æˆ·å¾ˆæœ‰ç”¨ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="c">/* Bad example */</span>
-<span class="nc">.element</span> <span class="p">{</span>
-  <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span><span class="p">;</span>
-  <span class="k">background</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
-  <span class="k">background</span><span class="o">:</span> <span class="sx">url("image.jpg")</span><span class="p">;</span>
-  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">3px</span> <span class="m">3px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c">/* Good example */</span>
-<span class="nc">.element</span> <span class="p">{</span>
-  <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
-  <span class="k">background-color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
-  <span class="k">background-image</span><span class="o">:</span> <span class="sx">url("image.jpg")</span><span class="p">;</span>
-  <span class="k">border-top</span><span class="o">-</span><span class="k">left</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">3px</span><span class="p">;</span>
-  <span class="k">border-top</span><span class="o">-</span><span class="k">right</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">3px</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-nesting">
-  <div class="col">
-    <h3>Less å’Œ Sass ä¸­çš„åµŒå¥—</h3>
-    <p>é¿å…éå¿…è¦çš„åµŒå¥—ã€‚è¿™æ˜¯å› ä¸ºè™½ç„¶ä½ å¯ä»¥ä½¿ç”¨åµŒå¥—ï¼Œä½†æ˜¯å¹¶ä¸æ„å‘³ç€åº”è¯¥ä½¿ç”¨åµŒå¥—ã€‚åªæœ‰åœ¨å¿…é¡»å°†æ ·å¼é™åˆ¶åœ¨çˆ¶å…ƒç´ å†…ï¼ˆä¹Ÿå°±æ˜¯åä»£é€‰æ‹©å™¨ï¼‰ï¼Œå¹¶ä¸”å­˜åœ¨å¤šä¸ªéœ€è¦åµŒå¥—çš„å…ƒç´ æ—¶æ‰ä½¿ç”¨åµŒå¥—ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="scss"><span class="c1">// Without nesting</span>
-<span class="nc">.table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span> <span class="p">{</span> <span class="err">â€¦</span> <span class="p">}</span>
-<span class="nc">.table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span> <span class="p">{</span> <span class="err">â€¦</span> <span class="p">}</span>
-
-<span class="c1">// With nesting</span>
-<span class="nc">.table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="p">{</span>
-  <span class="o">&gt;</span> <span class="nt">th</span> <span class="p">{</span> <span class="err">â€¦</span> <span class="p">}</span>
-  <span class="o">&gt;</span> <span class="nt">td</span> <span class="p">{</span> <span class="err">â€¦</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-comments">
-  <div class="col">
-    <h3>æ³¨é‡Š</h3>
-    <p>ä»£ç æ˜¯ç”±äººç¼–å†™å¹¶ç»´æŠ¤çš„ã€‚è¯·ç¡®ä¿ä½ çš„ä»£ç èƒ½å¤Ÿè‡ªæè¿°ã€æ³¨é‡Šè‰¯å¥½å¹¶ä¸”æ˜“äºä»–äººç†è§£ã€‚å¥½çš„ä»£ç æ³¨é‡Šèƒ½å¤Ÿä¼ è¾¾ä¸Šä¸‹æ–‡å…³ç³»å’Œä»£ç ç›®çš„ã€‚ä¸è¦ç®€å•åœ°é‡ç”³ç»„ä»¶æˆ– class åç§°ã€‚</p>
-    <p>å¯¹äºè¾ƒé•¿çš„æ³¨é‡Šï¼ŒåŠ¡å¿…ä¹¦å†™å®Œæ•´çš„å¥å­ï¼›å¯¹äºä¸€èˆ¬æ€§æ³¨è§£ï¼Œå¯ä»¥ä¹¦å†™ç®€æ´çš„çŸ­è¯­ã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="c">/* Bad example */</span>
-<span class="c">/* Modal header */</span>
-<span class="nc">.modal-header</span> <span class="p">{</span>
-  <span class="o">...</span>
-<span class="p">}</span>
-
-<span class="c">/* Good example */</span>
-<span class="c">/* Wrapping element for .modal-title and .modal-close */</span>
-<span class="nc">.modal-header</span> <span class="p">{</span>
-  <span class="o">...</span>
-<span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-classes">
-  <div class="col">
-    <h3>class å‘½å</h3>
-    <ul>
-      <li>class åç§°ä¸­åªèƒ½å‡ºç°å°å†™å­—ç¬¦å’Œç ´æŠ˜å·ï¼ˆdasheï¼‰ï¼ˆä¸æ˜¯ä¸‹åˆ’çº¿ï¼Œä¹Ÿä¸æ˜¯é©¼å³°å‘½åæ³•ï¼‰ã€‚ç ´æŠ˜å·åº”å½“ç”¨äºç›¸å…³ class çš„å‘½åï¼ˆç±»ä¼¼äºå‘½åç©ºé—´ï¼‰ï¼ˆä¾‹å¦‚ï¼Œ<code>.btn</code> å’Œ <code>.btn-danger</code>ï¼‰ã€‚</li>
-      <li>é¿å…è¿‡åº¦ä»»æ„çš„ç®€å†™ã€‚<code>.btn</code> ä»£è¡¨ <em>button</em>ï¼Œä½†æ˜¯ <code>.s</code> ä¸èƒ½è¡¨è¾¾ä»»ä½•æ„æ€ã€‚</li>
-      <li>class åç§°åº”å½“å°½å¯èƒ½çŸ­ï¼Œå¹¶ä¸”æ„ä¹‰æ˜ç¡®ã€‚</li>
-      <li>ä½¿ç”¨æœ‰æ„ä¹‰çš„åç§°ã€‚ä½¿ç”¨æœ‰ç»„ç»‡çš„æˆ–ç›®çš„æ˜ç¡®çš„åç§°ï¼Œä¸è¦ä½¿ç”¨è¡¨ç°å½¢å¼ï¼ˆpresentationalï¼‰çš„åç§°ã€‚</li>
-      <li>åŸºäºæœ€è¿‘çš„çˆ¶ class æˆ–åŸºæœ¬ï¼ˆbaseï¼‰ class ä½œä¸ºæ–° class çš„å‰ç¼€ã€‚</li>
-      <li>ä½¿ç”¨ <code>.js-*</code> class æ¥æ ‡è¯†è¡Œä¸ºï¼ˆä¸æ ·å¼ç›¸å¯¹ï¼‰ï¼Œå¹¶ä¸”ä¸è¦å°†è¿™äº› class åŒ…å«åˆ° CSS æ–‡ä»¶ä¸­ã€‚</li>
-    </ul>
-    <p>åœ¨ä¸º Sass å’Œ Less å˜é‡å‘½åæ˜¯ä¹Ÿå¯ä»¥å‚è€ƒä¸Šé¢åˆ—å‡ºçš„å„é¡¹è§„èŒƒã€‚</p>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="c">/* Bad example */</span>
-<span class="nc">.t</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.red</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.header</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-
-<span class="c">/* Good example */</span>
-<span class="nc">.tweet</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.important</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.tweet-header</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-selectors">
-  <div class="col">
-    <h3>é€‰æ‹©å™¨</h3>
-    <ul>
-      <li>å¯¹äºé€šç”¨å…ƒç´ ä½¿ç”¨ class ï¼Œè¿™æ ·åˆ©äºæ¸²æŸ“æ€§èƒ½çš„ä¼˜åŒ–ã€‚</li>
-      <li>å¯¹äºç»å¸¸å‡ºç°çš„ç»„ä»¶ï¼Œé¿å…ä½¿ç”¨å±æ€§é€‰æ‹©å™¨ï¼ˆä¾‹å¦‚ï¼Œ<code>[class^="..."]</code>ï¼‰ã€‚æµè§ˆå™¨çš„æ€§èƒ½ä¼šå—åˆ°è¿™äº›å› ç´ çš„å½±å“ã€‚</li>
-      <li>é€‰æ‹©å™¨è¦å°½å¯èƒ½çŸ­ï¼Œå¹¶ä¸”å°½é‡é™åˆ¶ç»„æˆé€‰æ‹©å™¨çš„å…ƒç´ ä¸ªæ•°ï¼Œå»ºè®®ä¸è¦è¶…è¿‡ 3 ã€‚</li>
-      <li><strong>åªæœ‰</strong>åœ¨å¿…è¦çš„æ—¶å€™æ‰å°† class é™åˆ¶åœ¨æœ€è¿‘çš„çˆ¶å…ƒç´ å†…ï¼ˆä¹Ÿå°±æ˜¯åä»£é€‰æ‹©å™¨ï¼‰ï¼ˆä¾‹å¦‚ï¼Œä¸ä½¿ç”¨å¸¦å‰ç¼€çš„ class æ—¶ -- å‰ç¼€ç±»ä¼¼äºå‘½åç©ºé—´ï¼‰ã€‚</li>
-    </ul>
-    <p>æ‰©å±•é˜…è¯»ï¼š</p>
-    <ul>
-      <li><a href="http://markdotto.com/2012/02/16/scope-css-classes-with-prefixes/">Scope CSS classes with prefixes</a></li>
-      <li><a href="http://markdotto.com/2012/03/02/stop-the-cascade/">Stop the cascade</a></li>
-    </ul>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="c">/* Bad example */</span>
-<span class="nt">span</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.page-container</span> <span class="nf">#stream</span> <span class="nc">.stream-item</span> <span class="nc">.tweet</span> <span class="nc">.tweet-header</span> <span class="nc">.username</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.avatar</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-
-<span class="c">/* Good example */</span>
-<span class="nc">.avatar</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.tweet-header</span> <span class="nc">.username</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-<span class="nc">.tweet</span> <span class="nc">.avatar</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-organization">
-  <div class="col">
-    <h3>ä»£ç ç»„ç»‡</h3>
-    <ul>
-      <li>ä»¥ç»„ä»¶ä¸ºå•ä½ç»„ç»‡ä»£ç æ®µã€‚</li>
-      <li>åˆ¶å®šä¸€è‡´çš„æ³¨é‡Šè§„èŒƒã€‚</li>
-      <li>ä½¿ç”¨ä¸€è‡´çš„ç©ºç™½ç¬¦å°†ä»£ç åˆ†éš”æˆå—ï¼Œè¿™æ ·åˆ©äºæ‰«æè¾ƒå¤§çš„æ–‡æ¡£ã€‚</li>
-      <li>å¦‚æœä½¿ç”¨äº†å¤šä¸ª CSS æ–‡ä»¶ï¼Œå°†å…¶æŒ‰ç…§ç»„ä»¶è€Œéé¡µé¢çš„å½¢å¼åˆ†æ‹†ï¼Œå› ä¸ºé¡µé¢ä¼šè¢«é‡ç»„ï¼Œè€Œç»„ä»¶åªä¼šè¢«ç§»åŠ¨ã€‚</li>
-    </ul>
-  </div>
-  <div class="col">
-    <div class="highlight"><pre><code class="css"><span class="c">/*</span>
-<span class="c"> * Component section heading</span>
-<span class="c"> */</span>
-
-<span class="nc">.element</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-
-
-<span class="c">/*</span>
-<span class="c"> * Component section heading</span>
-<span class="c"> *</span>
-<span class="c"> * Sometimes you need to include optional context for the entire component. Do that up here if it's important enough.</span>
-<span class="c"> */</span>
-
-<span class="nc">.element</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-
-<span class="c">/* Contextual sub-component or modifer */</span>
-<span class="nc">.element-heading</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-</code></pre></div>
-  </div>
-</div>
-
-<div class="section" id="css-editor-prefs">
-  <div class="col">
-    <h3>ç¼–è¾‘å™¨é…ç½®</h3>
-    <p>å°†ä½ çš„ç¼–è¾‘å™¨æŒ‰ç…§ä¸‹é¢çš„é…ç½®è¿›è¡Œè®¾ç½®ï¼Œä»¥é¿å…å¸¸è§çš„ä»£ç ä¸ä¸€è‡´å’Œå·®å¼‚ï¼š</p>
-    <ul>
-      <li>ç”¨ä¸¤ä¸ªç©ºæ ¼ä»£æ›¿åˆ¶è¡¨ç¬¦ï¼ˆsoft-tab å³ç”¨ç©ºæ ¼ä»£è¡¨ tab ç¬¦ï¼‰ã€‚</li>
-      <li>ä¿å­˜æ–‡ä»¶æ—¶ï¼Œåˆ é™¤å°¾éƒ¨çš„ç©ºç™½ç¬¦ã€‚</li>
-      <li>è®¾ç½®æ–‡ä»¶ç¼–ç ä¸º UTF-8ã€‚</li>
-      <li>åœ¨æ–‡ä»¶ç»“å°¾æ·»åŠ ä¸€ä¸ªç©ºç™½è¡Œã€‚</li>
-    </ul>
-    <p>å‚ç…§æ–‡æ¡£å¹¶å°†è¿™äº›é…ç½®ä¿¡æ¯æ·»åŠ åˆ°é¡¹ç›®çš„ <code>.editorconfig</code> æ–‡ä»¶ä¸­ã€‚ä¾‹å¦‚ï¼š<a href="https://github.com/twbs/bootstrap/blob/master/.editorconfig">Bootstrap ä¸­çš„ .editorconfig å®ä¾‹</a>ã€‚æ›´å¤šä¿¡æ¯è¯·å‚è€ƒ <a href="http://editorconfig.org">about EditorConfig</a>ã€‚</p>
-  </div>
-</div>
-
-
-    <footer class="footer">
-  <p>&lt;3</p>
-  <p>Heavily inspired by <a href="https://github.com/necolas/idiomatic-css">Idiomatic CSS</a> and the <a href="http://github.com/styleguide">GitHub Styleguide</a>. Made with all the love in the world by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-  <p>ç”±<a href="http://www.bootcss.com/">Bootstrapä¸­æ–‡ç½‘</a>ç¿»è¯‘å¹¶æ•´ç†</p>
-  <p>Open sourced under MIT. Copyright 2014 <a href="https://twitter.com/mdo">@mdo</a>.</p>
-
-  <ul class="quick-links">
-    <li class="follow-btn">
-      <a href="https://twitter.com/mdo" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @mdo</a>
-    </li>
-    <li class="tweet-btn">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://codeguide.co" data-count="horizontal" data-via="mdo">Tweet</a>
-    </li>
-  </ul>
-</footer>
-
-
-    <script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa25e97c8b6d0ae5501b3b46d61ed807f' type='text/javascript'%3E%3C/script%3E"));
-</script><script src=" http://hm.baidu.com/h.js?a25e97c8b6d0ae5501b3b46d61ed807f" type="text/javascript"></script>
-
-
-  
-
-</body></html>Ytext/html¤Ô_WebResourceResponse_+http://codeguide.bootcss.com/code-guide.cssOäbplist00Ô‚ƒX$versionX$objectsY$archiverT$top † ¯+#)*0123YZ[\]^_`abcdefghijklmnopqrstuvwxy}U$nullİ	
- !"R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€	€€€ €*€€€Ó$%'(WNS.base[NS.relative€ €€_+http://codeguide.bootcss.com/code-guide.cssÒ+,-.Z$classnameX$classesUNSURL¢-/XNSObject#A¾#Ü_Wõb ÈÓ456GXWNS.keysZNS.objects¯789:;<=>?@ABCDEF€	€
-€€€€€€€€€€€€€€¯IJKLMNOPQRSTUVW€€€€€€€€ €!€"€#€$€%€&€'€(€)\Content-Type]Last-ModifiedSAgeSViaVServer_Content-EncodingWExpires_Transfer-Encoding]Cache-ControlXX-Source\X-Request-IdTDateZConnectionTEtagTVaryWX-CacheXtext/css_Wed, 31 Aug 2016 03:36:57 GMTV217225_lT.2428.M.1, T.65134.H.1, V.403-zj-lna-132, S.mix-gd-can-011, V.mix-gd-can-007, T.87198.N.1, M.ctn-cq-wld-195Zmarco/0.23Tgzip_Mon, 16 Jan 2017 00:40:11 GMTXIdentity^max-age=691200UU/304_ c01245e89ea663eb6e74f34c38bdb88f_Mon, 09 Jan 2017 14:54:34 GMTZkeep-alive_$W/"5a5a040ca86d8908c4a62f25034ab404"_Accept-Encoding_5MISS from mix-gd-can-007, MISS(S) from ctn-cq-wld-195Ò+,z{_NSMutableDictionary£z|/\NSDictionaryÒ+,~_NSHTTPURLResponse£€/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑ„…_WebResourceResponse€    # - 2 7 e k † ‰   “ – š  ¤ § ª ­ ° ³ µ · ¹ » ½ ¾ À Â Ä Æ È Ê Ì Ó Û ç é ë í +4:=FOQSZbm€‚„†ˆŠŒ’”–˜šœ ³µ·¹»½¿ÁÃÅÇÉËÍÏÑÓÕâğôøÿ.<ERWbglt}¤#CL[a„¤¯Öè %;?LQei}‹ ¶             †              ¸Oç/*
- * Fonts
- */
-
-@font-face {
-  font-family: 'fontello';
-  src: url('font/fontello.eot');
-  src: url('font/fontello.eot#iefix') format('embedded-opentype'),
-       url('font/fontello.woff') format('woff'),
-       url('font/fontello.ttf') format('truetype'),
-       url('font/fontello.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  font-variant: normal;
-  text-transform: none;
-}
-
-.icon-github-circled:before { content: '\e800'; } /* 'î €' */
-.icon-twitter:before { content: '\e801'; } /* 'î ' */
-
-
-/*
- * Scaffolding and type
- */
-
-html {
-  font-size: 16px;
-}
-@media (min-width: 48em) {
-  html {
-    font-size: 20px;
-  }
-}
-
-body {
-  margin: 0;
-  font: 1rem/1.5 "PT Sans", sans-serif;
-  color: #5a5a5a;
-}
-
-a {
-  color: #08c;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-h1, h2, h3, h4 {
-  margin: 0 0 .5rem;
-  font-weight: normal;
-  line-height: 1;
-  color: #2a2a2a;
-  letter-spacing: -.05em;
-}
-h1 { font-size: 3rem; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.25rem }
-
-p {
-  margin: 0 0 1rem;
-}
-.lead {
-  font-size: 1.3rem;
-}
-
-blockquote {
-  position: relative;
-  margin: 0 1rem 1rem;
-  font-style: italic;
-  color: #7a7a7a;
-}
-blockquote p {
-  margin-bottom: 0;
-}
-
-ul li {
-  margin-bottom: .25rem;
-}
-
-/* Tighten up margin on last items */
-p:last-child,
-ul:last-child,
-blockquote:last-child{
-  margin-bottom: 0;
-}
-
-
-
-/*
- * Code
- */
-
-code,
-pre {
-  font-family: "PT Mono", Menlo, "Courier New", monospace;
-  font-size: 95%;
-}
-code {
-  padding: 2px 4px;
-  font-size: 85%;
-  color: #d44950;
-  background-color: #f7f7f9;
-  border-radius: .2rem;
-}
-
-pre {
-  display: block;
-  margin: 0 0 1rem;
-  line-height: 1.4;
-  white-space: pre;
-  white-space: pre-wrap;
-}
-pre code {
-  padding: 0;
-  color: inherit;
-  background-color: transparent;
-  border: 0;
-}
-.highlight {
-  margin: 0;
-}
-.highlight pre {
-  margin-bottom: 0;
-}
-.highlight + .highlight {
-  margin-top: 1rem;
-}
-
-
-/*
- * The Grid
- */
-
-.col {
-  padding: 2rem 1rem;
-}
-.col p {
-  max-width: 40rem;
-}
-.col + .col {
-  border-top: 1px solid #dfe1e8;
-  background-color: #f7f7f9;
-}
-@media (min-width: 38em) {
-  .col {
-    padding: 2rem;
-  }
-}
-@media (min-width: 48em) {
-  .section {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-  }
-  .col {
-    display: table-cell;
-    padding: 3rem;
-    vertical-align: top;
-  }
-  .col + .col {
-    border-top: 0;
-  }
-}
-
-/* Make the ToC a whole section */
-.toc .col + .col {
-  background-color: #fff;
-}
-
-
-/*
- * Masthead
- */
-
-.masthead {
-  padding: 3rem 1rem;
-  color: rgba(255,255,255,.5);
-  text-align: center;
-  background-color: #2a3440;
-}
-.masthead h1 {
-  color: #fff;
-  margin-bottom: .25rem;
-}
-.masthead .icon {
-  display: inline-block;
-  font-size: 3rem;
-  margin: 0 .5rem;
-}
-.masthead-links {
-  font-size: 2rem;
-}
-.masthead-links a {
-  color: rgba(255,255,255,.5);
-  text-decoration: none;
-  transition: all .15s linear;
-}
-.masthead-links a:hover {
-  color: #fff;
-}
-
-@media (min-width: 38em) {
-  .masthead {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-
-/*
- * Sections
- */
-
-.heading {
-  padding: 2rem 1rem 1.5rem;
-  background-color: #dfe1e8;
-}
-
-@media (min-width: 38em) {
-  .heading {
-    padding: 3rem 3rem 2.5rem;
-  }
-}
-
-.section {
-  border-bottom: 1px solid #dfe1e8;
-}
-
-
-/*
- * Footer
- */
-
-.footer {
-  padding: 3rem 1rem;
-  font-size: 90%;
-  text-align: center;
-}
-.footer p {
-  margin-bottom: .5rem;
-}
-
-.quick-links {
-  list-style: none;
-  margin-left: 0;
-}
-.quick-links li {
-  display: inline;
-}
-
-
-/*
- * Syntax highlighting
- */
-
-.hll { background-color: #ffffcc }
- /*{ background: #f0f3f3; }*/
-.c { color: #999; } /* Comment */
-.err { color: #AA0000; background-color: #FFAAAA } /* Error */
-.k { color: #006699; } /* Keyword */
-.o { color: #555555 } /* Operator */
-.cm { color: #999; } /* Comment.Multiline */ /* Edited to remove italics and make into comment */
-.cp { color: #009999 } /* Comment.Preproc */
-.c1 { color: #999; } /* Comment.Single */
-.cs { color: #999; } /* Comment.Special */
-.gd { background-color: #FFCCCC; border: 1px solid #CC0000 } /* Generic.Deleted */
-.ge { font-style: italic } /* Generic.Emph */
-.gr { color: #FF0000 } /* Generic.Error */
-.gh { color: #003300; } /* Generic.Heading */
-.gi { background-color: #CCFFCC; border: 1px solid #00CC00 } /* Generic.Inserted */
-.go { color: #AAAAAA } /* Generic.Output */
-.gp { color: #000099; } /* Generic.Prompt */
-.gs { } /* Generic.Strong */
-.gu { color: #003300; } /* Generic.Subheading */
-.gt { color: #99CC66 } /* Generic.Traceback */
-.kc { color: #006699; } /* Keyword.Constant */
-.kd { color: #006699; } /* Keyword.Declaration */
-.kn { color: #006699; } /* Keyword.Namespace */
-.kp { color: #006699 } /* Keyword.Pseudo */
-.kr { color: #006699; } /* Keyword.Reserved */
-.kt { color: #007788; } /* Keyword.Type */
-.m { color: #FF6600 } /* Literal.Number */
-.s { color: #d44950 } /* Literal.String */
-.na { color: #4f9fcf } /* Name.Attribute */
-.nb { color: #336666 } /* Name.Builtin */
-.nc { color: #00AA88; } /* Name.Class */
-.no { color: #336600 } /* Name.Constant */
-.nd { color: #9999FF } /* Name.Decorator */
-.ni { color: #999999; } /* Name.Entity */
-.ne { color: #CC0000; } /* Name.Exception */
-.nf { color: #CC00FF } /* Name.Function */
-.nl { color: #9999FF } /* Name.Label */
-.nn { color: #00CCFF; } /* Name.Namespace */
-.nt { color: #2f6f9f; } /* Name.Tag */
-.nv { color: #003333 } /* Name.Variable */
-.ow { color: #000000; } /* Operator.Word */
-.w { color: #bbbbbb } /* Text.Whitespace */
-.mf { color: #FF6600 } /* Literal.Number.Float */
-.mh { color: #FF6600 } /* Literal.Number.Hex */
-.mi { color: #FF6600 } /* Literal.Number.Integer */
-.mo { color: #FF6600 } /* Literal.Number.Oct */
-.sb { color: #CC3300 } /* Literal.String.Backtick */
-.sc { color: #CC3300 } /* Literal.String.Char */
-.sd { color: #CC3300; font-style: italic } /* Literal.String.Doc */
-.s2 { color: #CC3300 } /* Literal.String.Double */
-.se { color: #CC3300; } /* Literal.String.Escape */
-.sh { color: #CC3300 } /* Literal.String.Heredoc */
-.si { color: #AA0000 } /* Literal.String.Interpol */
-.sx { color: #CC3300 } /* Literal.String.Other */
-.sr { color: #33AAAA } /* Literal.String.Regex */
-.s1 { color: #CC3300 } /* Literal.String.Single */
-.ss { color: #FFCC33 } /* Literal.String.Symbol */
-.bp { color: #336666 } /* Name.Builtin.Pseudo */
-.vc { color: #003333 } /* Name.Variable.Class */
-.vg { color: #003333 } /* Name.Variable.Global */
-.vi { color: #003333 } /* Name.Variable.Instance */
-.il { color: #FF6600 } /* Literal.Number.Integer.Long */
-
-.css .o,
-.css .o + .nt,
-.css .nt + .nt { color: #999; }
-
-Xtext/cssÔ_/http://codeguide.bootcss.com/font/fontello.woffOÌbplist00Ô€X$versionX$objectsY$archiverT$top † ¯*#)*0123WXYZ[\]^_`abcdefghijklmnopqrstuyzU$nullİ	
- !"R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€	€€€ €)€€(€Ó$%'(WNS.base[NS.relative€ €€_/http://codeguide.bootcss.com/font/fontello.woffÒ+,-.Z$classnameX$classesUNSURL¢-/XNSObject#A¾#Ü_XÆ ÈÓ456FVWNS.keysZNS.objects¯789:;<=>?@ABCDE€	€
-€€€€€€€€€€€€€¯GHIJKLMNOPQRSTU€€€€€€€€€ €!€"€#€$€%€&€'\Content-Type]Last-ModifiedSAgeSViaVServerWExpiresXX-SourceTDate\X-Request-Id^Content-Length]Cache-ControlZConnectionTEtag]Accept-RangesWX-Cache_application/x-font-woff_Wed, 31 Aug 2016 03:36:57 GMTV626314_;T.2427.H.1, V.mix-gd-can-006, T.87198.H.1, M.ctn-cq-wld-202Zmarco/0.23_Tue, 03 Jan 2017 07:05:52 GMTUU/200_Mon, 09 Jan 2017 14:54:34 GMT_B48f8c41ee753505a965e8d8618958627; a51bf4379481744aa03ae8c088b601efT2892^max-age=691200Zkeep-alive_""442e510501c4585aa14f91c5802050e0"Ubytes_0HIT from mix-gd-can-006; HIT from ctn-cq-wld-202Ò+,vw_NSMutableDictionary£vx/\NSDictionary_application/x-font-woffÒ+,{|_NSHTTPURLResponse£}~/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑ‚_WebResourceResponse€    # - 2 7 d j … ˆ Œ  ’ • ™ œ £ ¦ © ¬ ¯ ² ´ ¶ ¸ º ¼ ½ ¿ Á Ã Å Ç É Ë Ò Ú æ è ê ì#.7=@IRTV]ep‚„†ˆŠŒ’”–˜šœ ²´¶¸º¼¾ÀÂÄÆÈÊÌÎĞÒßíñõü.<GLZb|œ£áì2w|‹–»Áôù :?SWky‹¤             ƒ              ¦OLwOFF     L     d                       OS/2  D   D   V=ÎHécmap  ˆ   :  JĞ·cvt   Ä      Iÿºfpgm  Ø  ù  	‘Š
-x;gasp  Ô         glyf  Ü  è  /jÓhead  Ä   4   6œ:hhea  ø       $7Shmtx  	      
-á  loca  	$        maxp  	,         ß
-name  	L  w  ÍÌpost  
-Ä   0   A0™~‚prep  
-ô   V   V’¡šÿxœc`d^À8•ƒ©ŠiC„f|À`ÈÈÄÀÀÄÀÊÌ€¤¹¦08¼`xÁÈô?‹!Š™›Á(Ì’ ïJ5xœc```f€`FpòÁ| Í¤˜^0şÿRğ‚DK0BÕ#Ãˆ dä¯  xœc`@FFÌÜÿ€0 &xœUÙvÓV•<dp:d  ×Ü8PëÊ„)0i*Åv!­¤täÇ>ëkB»Vù´î}=$´t­¶,–Ï¾G[gØ:çF#*}ˆkÔ¡’—©¬=–J÷I\×u/•q]¶OI›¨$JjİìP.ñXë*Y'X'ãå VOUg âeIDD©—&Iâ‰ã'‰g%I %£§ÒÈPB5ÄRÕ¡LéĞ«×qÓ@ÊF£uXT÷CÅ'Ç5§Ô¬F*W9ÂëÕF¾§/{Ä:Á³­‡1x¬~”*Š‘éÈ?vJN”†TqÔ¡Vâè0“_÷‘L*Í@¦ŒbE¥î¸İıtÛ1=t:¾.J•Fªº¹Î(šíÑñ¨ƒ(ÙÆé¤ÜĞÙöğåST«]q³í@f\JÉltŸD &RãéN5œ©õGÅÙçÏÉ\”ª<U2‡z™3;{q1ín'«²p¤Ÿ2ovvã‡C§W‡ÑúLáÌGâb~>BúPj~"N$¥FXÌò§†qW B¹1ˆÊàS„9tEÚÙf]ãµ1ö†ÏùJ©a=	Úè£ø~
-ıN$+gQ£õHœÍc×u­ÜgPKµ»;2¯C•"îï®3ç„aU_ùŞ4ÿˆgü@Ş4…Kû–)J´o›¢L»hŠ
-íT¥]6ÅíŠ)¦iÏšb†öSÌÒ32ãÿËÜç‘ûŞñ›ö]ä¦}¹ißGnÚ›V!7m¹i/ 7­FnÚU£:viRAĞ4²úaÜV›õ@ÖŒ4|i`ò.bÈúêDGµµÊÅuâri¢§»"›â.¯Û><İî«šFİ°ÕøÆ‘ò0FzšĞYùÍá¿íMİ.šî2ª2èL
-À eí@Ó:Û	¤õš§øò`\†xÎJCµTŸ;†¦ïåy_÷±9ñ¾ÇíÆ.·\wy	YÖrcöğßRdªëå-­T'G¬+'UkC*¼(º¾’”{´µ¿(©²ò^”ÖÊç“›=ƒB[¶îa°#LiÊ%^S¥(=ÔR²C,o)Ê<à”‹Z†Ä¸ujkÄé¡z!†¡´½pH)]ß´Êwñ«kØèøÅáézrŸâ*ûQğT×FıèÚ¼fİ2ƒ)Uª§ûŒO±¯ÛöQYi¤³·T×4ë9ÓOäkàto8hİ=T|4A#U5ÇèÆ(c4–5åßt1V~ÃhÕbû=ÜO¤U¬¹K˜ì›÷à´»ı*ûµœ[FÖı×½mäŠŸ#1¿-
-ü;b·dÔ;“ÈYĞÆ&w®ƒmÄmö?&§ÿß†…ErW;»yêÃÕ“Q%wÙò¸ËMvY×£6GÕNû-7æØár,¶Ä`A¶şÁÿ1îwiQàĞÈe˜ˆÚt¡êáê«±m8WvÍ±ãt z .Aß»Öó	€õÜ#ç.À}rvÈ!ø”‚ÏÈ¹ğ99_C0 ‡`—œ; È!xHÁ9ÈÙø’‚¯È!ˆÉ!HÈ¹ğ˜‚'ä|MÁ7F®Ndş–Ù úÎ¢›@©Ú8dF®MØû<XöEdZDê‘‘ëêS,õ{‹HıÁ"R4rcBı‰KıÙ"R±ˆÔgÆ—™#)¯óş—ê­^     ÿÿ xœ-PMka|çıØ˜İ4İ¯,uk»’uS’İ$RÓÄ$­Öh+‚PDK)uÅC”^z‘zğæèÁŸQ4?¤¿À«GMD˜a`f şÌØ>ËÁ.<lUk‰3èŞ Â‡È‰!ï†Ç€4ÇŸã8 b„ÈÂèÙäÁ nİ«AÙ–Zu©H¿‡q°Éƒ8h¾ÔĞ÷”ˆiICw™%=?ˆ°tñş#5ûhè–.çAobÓEöêòLSoVš]Ï¡Ğp´û†Ÿ$wP´õĞöºë·M‘w|OÍUò¹|†2Œçm)2^ÕÏ°¨]Nüº:Å××u¦f?¶ËLuÃñú¨ÑêS-hš,9²ßjŒãh¥Hº/¤m•L†<+“®Z0œ±æ
-eUV¿¾ø0›Ngóñ°øï7;§ŸĞ€ÁvÖ*RH¹0KÄx‘øpa¥ ¸H3#–!¥‹œ "¼X”WMóÎ’WUÌ:JÅĞUxÙjv"ü/=4­ã‹–ŸÄíNÓjw¤ÒfçkIíåé÷·ß>-ÛŸ6öKËšm÷wıp-,®Ş‹t{’ô}#¦“v`m}ır8 çl‡F’…ƒ!T~ú¦¶w(ıñ1ŞËW«ò/É·MCxœc`d`` bùiÆ¼ñü6_¸™_ EÎ›H†Ğ”şaî`ær9˜@¢ æ	Ùxœc`d``úŸÅÅü‚áÿ_æ 
-` Š è  Y                S         n   ^	‘    xœuËjÂ@†ÿñÒ‹B[Zè¶³*Ji¼`7‚ XtÓn¤¸-1Æ$32_£ïĞ‡éKôYú›Œ¥(M˜Ìw¾9sæd \ãùóÄ‘³À£œ8EÏr‘şÙr‰üb¹Œ*Ş,ŸĞ¿[®àå*nğÁ
-¢tÎhOËWâÒrâÎr‘şÑr‰Ü³\Æ­xµ|BïY®`"RËUÜ‹¯Zmu„FÖuÙn¶:rº•Š*JÜXºk*Ê¾œ«Äøq¬O-÷<öƒuìê}¸Ÿ'¾N#•È–ÓÜ«‘ŸøÚ5şlW=İmcær®ÕRm†\iµğ=ã„Æ¬ºÆßó0€Â
-[hD¼ª5Ú:ç6šh¡Cš2C23ÏŠÀELãbÍa¶’2îsÌ%´>3b²ßå‘“îYE­ÆÒîŒ(ó’}9ìî0kDJ²L7³³ßŞSlxZ›Öp×®Ku%1<¨!y»µGïd·bh»hğıçÿ~ İ_„K xœc`b€ .ì€™‘‰‘™/=³$£4I79³(9'5…½¤<³¤$µˆ y.ÅK¸ ÈRX±Y¹  c °#D°#p²(	ERD²
-*±D±$ˆQX°@ˆX±D±&ˆQX¸ ˆX±DYYYY¸ÿ…°± D  _application/x-font-woffÔ_(http://codeguide.bootcss.com/chinese.cssOÈbplist00Ô~X$versionX$objectsY$archiverT$top † ¯)#)*0123WXYZ[\]^_`abcdefghijklmnopqrstuyU$nullİ	
- !"R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€	€€€ €(€€€Ó$%'(WNS.base[NS.relative€ €€_(http://codeguide.bootcss.com/chinese.cssÒ+,-.Z$classnameX$classesUNSURL¢-/XNSObject#A¾#Ü_X$p ÈÓ456FVWNS.keysZNS.objects¯789:;<=>?@ABCDE€	€
-€€€€€€€€€€€€€¯HIJKLMNOPQRSTU€€€€€€€€€ €!€"€#€$€%€&€'\Content-Type]Last-ModifiedSAgeSViaVServerWExpiresXX-SourceTDate\X-Request-Id^Content-Length]Cache-ControlZConnectionTEtag]Accept-RangesWX-CacheXtext/css_Wed, 31 Aug 2016 03:36:57 GMTV178408_lT.2427.M.1, T.65134.H.1, V.403-zj-lna-134, S.mix-gd-can-003, V.mix-gd-can-006, T.87198.H.1, M.ctn-cq-wld-197Zmarco/0.23_Sun, 15 Jan 2017 02:32:57 GMTUU/200_Mon, 09 Jan 2017 14:54:34 GMT_Bfbd7d09a2f3371b55de20196bffa9eab; fc87048efb8c735a10f2d7155cb49094S180^max-age=691200Zkeep-alive_""bf1e785b9e3f8d6108302bc8208c6613"Ubytes_1MISS from mix-gd-can-006; HIT from ctn-cq-wld-197Ò+,vw_NSMutableDictionary£vx/\NSDictionaryÒ+,z{_NSHTTPURLResponse£|}/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑ€_WebResourceResponse€    # - 2 7 c i „ ‡ ‹  ‘ ” ˜ › ¢ ¥ ¨ « ® ± ³ µ · ¹ » ¼ ¾ À Â Ä Æ È Ê Ñ Ù å ç é ë&/58AJLNU]hz|~€‚„†ˆŠŒ’”–˜ª¬®°²´¶¸º¼¾ÀÂÄÆÈÊ×åéíôü
-&4?DRZcƒŠù$*J“¢­ÒØ'+8=QUiw‰Œ¢             ‚              ¤O´body {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
-}Ô !"_9http://hm.baidu.com/h.js?a25e97c8b6d0ae5501b3b46d61ed807fObplist00Ô_`X$versionX$objectsY$archiverT$top † ¯#)*0123GHIJKLMNOPQRSTUYZU$nullİ	
- !"R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€	€€€ €€€€Ó$%'(WNS.base[NS.relative€ €€_9http://hm.baidu.com/h.js?a25e97c8b6d0ae5501b3b46d61ed807fÒ+,-.Z$classnameX$classesUNSURL¢-/XNSObject#A¾#Ü_X1H ÈÓ456>FWNS.keysZNS.objects§789:;<=€	€
-€€€€€§?@ABCDE€€€€€€€€VServer\Content-TypeTDate_Content-Encoding^Content-Length]Cache-ControlTEtagVapache_application/javascript_Mon, 09 Jan 2017 14:54:34 GMTTgzipT8287_max-age=0, must-revalidate_ 3984f2803204f9d911833f5b657592b3Ò+,VW_NSMutableDictionary£VX/\NSDictionary_application/javascriptÒ+,[\_NSHTTPURLResponse£]^/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑab_WebResourceResponse€    # - 2 7 T Z u x |  ‚ … ‰ Œ “ – ™ œ Ÿ ¢ ¤ ¦ ¨ ª ¬ ­ ¯ ± ³ µ · ¹ » Â Ê Ö Ø Ú Ü(17:CLNPW_jrtvxz|~€ˆŠŒ’”–˜Ÿ¬±ÄÓáæí&+0Mpu‹œµºÎÒæô	             c              !OTç(function(){var h={},mt={},c={id:"a25e97c8b6d0ae5501b3b46d61ed807f",dm:["codeguide.bootcss.com"],js:"tongji.baidu.com/hm-web/js/",etrk:[],icon:'',ctrk:false,align:-1,nv:-1,vdur:1800000,age:31536000000,rec:0,rp:[],trust:0,vcard:0,qiao:0,lxb:0,conv:0,med:0,cvcc:'',cvcf:[],apps:''};var r=void 0,s=!0,t=null,w=!1;mt.h={};mt.h.wa=/msie (\d+\.\d+)/i.test(navigator.userAgent);mt.h.ua=/msie (\d+\.\d+)/i.test(navigator.userAgent)?document.documentMode||+RegExp.$1:r;mt.h.cookieEnabled=navigator.cookieEnabled;mt.h.javaEnabled=navigator.javaEnabled();mt.h.language=navigator.language||navigator.browserLanguage||navigator.systemLanguage||navigator.userLanguage||"";mt.h.ya=(window.screen.width||0)+"x"+(window.screen.height||0);mt.h.colorDepth=window.screen.colorDepth||0;mt.cookie={};
-mt.cookie.set=function(a,b,f){var d;f.F&&(d=new Date,d.setTime(d.getTime()+f.F));document.cookie=a+"="+b+(f.domain?"; domain="+f.domain:"")+(f.path?"; path="+f.path:"")+(d?"; expires="+d.toGMTString():"")+(f.Ra?"; secure":"")};mt.cookie.get=function(a){return(a=RegExp("(^| )"+a+"=([^;]*)(;|$)").exec(document.cookie))?a[2]:t};mt.o={};mt.o.ha=function(a){return document.getElementById(a)};mt.o.Ka=function(a,b){for(b=b.toUpperCase();(a=a.parentNode)&&1==a.nodeType;)if(a.tagName==b)return a;return t};
-(mt.o.U=function(){function a(){if(!a.w){a.w=s;for(var b=0,f=d.length;b<f;b++)d[b]()}}function b(){try{document.documentElement.doScroll("left")}catch(d){setTimeout(b,1);return}a()}var f=w,d=[],g;document.addEventListener?g=function(){document.removeEventListener("DOMContentLoaded",g,w);a()}:document.attachEvent&&(g=function(){"complete"===document.readyState&&(document.detachEvent("onreadystatechange",g),a())});(function(){if(!f)if(f=s,"complete"===document.readyState)a.w=s;else if(document.addEventListener)document.addEventListener("DOMContentLoaded",
-g,w),window.addEventListener("load",a,w);else if(document.attachEvent){document.attachEvent("onreadystatechange",g);window.attachEvent("onload",a);var d=w;try{d=window.frameElement==t}catch(n){}document.documentElement.doScroll&&d&&b()}})();return function(b){a.w?b():d.push(b)}}()).w=w;mt.event={};mt.event.c=function(a,b,f){a.attachEvent?a.attachEvent("on"+b,function(b){f.call(a,b)}):a.addEventListener&&a.addEventListener(b,f,w)};
-mt.event.preventDefault=function(a){a.preventDefault?a.preventDefault():a.returnValue=w};mt.j={};mt.j.parse=function(){return(new Function('return (" + source + ")'))()};
-mt.j.stringify=function(){function a(a){/["\\\x00-\x1f]/.test(a)&&(a=a.replace(/["\\\x00-\x1f]/g,function(a){var b=f[a];if(b)return b;b=a.charCodeAt();return"\\u00"+Math.floor(b/16).toString(16)+(b%16).toString(16)}));return'"'+a+'"'}function b(a){return 10>a?"0"+a:a}var f={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"};return function(d){switch(typeof d){case "undefined":return"undefined";case "number":return isFinite(d)?String(d):"null";case "string":return a(d);case "boolean":return String(d);
-default:if(d===t)return"null";if(d instanceof Array){var f=["["],k=d.length,n,e,l;for(e=0;e<k;e++)switch(l=d[e],typeof l){case "undefined":case "function":case "unknown":break;default:n&&f.push(","),f.push(mt.j.stringify(l)),n=1}f.push("]");return f.join("")}if(d instanceof Date)return'"'+d.getFullYear()+"-"+b(d.getMonth()+1)+"-"+b(d.getDate())+"T"+b(d.getHours())+":"+b(d.getMinutes())+":"+b(d.getSeconds())+'"';n=["{"];e=mt.j.stringify;for(k in d)if(Object.prototype.hasOwnProperty.call(d,k))switch(l=
-d[k],typeof l){case "undefined":case "unknown":case "function":break;default:f&&n.push(","),f=1,n.push(e(k)+":"+e(l))}n.push("}");return n.join("")}}}();mt.lang={};mt.lang.d=function(a,b){return"[object "+b+"]"==={}.toString.call(a)};mt.lang.Oa=function(a){return mt.lang.d(a,"Number")&&isFinite(a)};mt.lang.Qa=function(a){return mt.lang.d(a,"String")};mt.localStorage={};
-mt.localStorage.A=function(){if(!mt.localStorage.f)try{mt.localStorage.f=document.createElement("input"),mt.localStorage.f.type="hidden",mt.localStorage.f.style.display="none",mt.localStorage.f.addBehavior("#default#userData"),document.getElementsByTagName("head")[0].appendChild(mt.localStorage.f)}catch(a){return w}return s};
-mt.localStorage.set=function(a,b,f){var d=new Date;d.setTime(d.getTime()+f||31536E6);try{window.localStorage?(b=d.getTime()+"|"+b,window.localStorage.setItem(a,b)):mt.localStorage.A()&&(mt.localStorage.f.expires=d.toUTCString(),mt.localStorage.f.load(document.location.hostname),mt.localStorage.f.setAttribute(a,b),mt.localStorage.f.save(document.location.hostname))}catch(g){}};
-mt.localStorage.get=function(a){if(window.localStorage){if(a=window.localStorage.getItem(a)){var b=a.indexOf("|"),f=a.substring(0,b)-0;if(f&&f>(new Date).getTime())return a.substring(b+1)}}else if(mt.localStorage.A())try{return mt.localStorage.f.load(document.location.hostname),mt.localStorage.f.getAttribute(a)}catch(d){}return t};
-mt.localStorage.remove=function(a){if(window.localStorage)window.localStorage.removeItem(a);else if(mt.localStorage.A())try{mt.localStorage.f.load(document.location.hostname),mt.localStorage.f.removeAttribute(a),mt.localStorage.f.save(document.location.hostname)}catch(b){}};mt.sessionStorage={};mt.sessionStorage.set=function(a,b){if(window.sessionStorage)try{window.sessionStorage.setItem(a,b)}catch(f){}};
-mt.sessionStorage.get=function(a){return window.sessionStorage?window.sessionStorage.getItem(a):t};mt.sessionStorage.remove=function(a){window.sessionStorage&&window.sessionStorage.removeItem(a)};mt.V={};mt.V.log=function(a,b){var f=new Image,d="mini_tangram_log_"+Math.floor(2147483648*Math.random()).toString(36);window[d]=f;f.onload=f.onerror=f.onabort=function(){f.onload=f.onerror=f.onabort=t;f=window[d]=t;b&&b(a)};f.src=a};mt.N={};
-mt.N.na=function(){var a="";if(navigator.plugins&&navigator.mimeTypes.length){var b=navigator.plugins["Shockwave Flash"];b&&b.description&&(a=b.description.replace(/^.*\s+(\S+)\s+\S+$/,"$1"))}else if(window.ActiveXObject)try{if(b=new ActiveXObject("ShockwaveFlash.ShockwaveFlash"))(a=b.GetVariable("$version"))&&(a=a.replace(/^.*\s+(\d+),(\d+).*$/,"$1.$2"))}catch(f){}return a};
-mt.N.Ja=function(a,b,f,d,g){return'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="'+a+'" width="'+f+'" height="'+d+'"><param name="movie" value="'+b+'" /><param name="flashvars" value="'+(g||"")+'" /><param name="allowscriptaccess" value="always" /><embed type="application/x-shockwave-flash" name="'+a+'" width="'+f+'" height="'+d+'" src="'+b+'" flashvars="'+(g||"")+'" allowscriptaccess="always" /></object>'};mt.url={};
-mt.url.i=function(a,b){var f=a.match(RegExp("(^|&|\\?|#)("+b+")=([^&#]*)(&|$|#)",""));return f?f[3]:t};mt.url.Ma=function(a){return(a=a.match(/^(https?:)\/\//))?a[1]:t};mt.url.ka=function(a){return(a=a.match(/^(https?:\/\/)?([^\/\?#]*)/))?a[2].replace(/.*@/,""):t};mt.url.P=function(a){return(a=mt.url.ka(a))?a.replace(/:\d+$/,""):a};mt.url.La=function(a){return(a=a.match(/^(https?:\/\/)?[^\/]*(.*)/))?a[2].replace(/[\?#].*/,"").replace(/^$/,"/"):t};
-(function(){function a(){for(var a=w,f=document.getElementsByTagName("script"),d=f.length,d=100<d?100:d,g=0;g<d;g++){var k=f[g].src;if(k&&0===k.indexOf("https://hm.baidu.com/h")){a=s;break}}return a}return h.ga=a})();var A=h.ga;
-h.B={Na:"http://tongji.baidu.com/hm-web/welcome/ico",T:"hm.baidu.com/hm.gif",Z:"baidu.com",ra:"hmmd",sa:"hmpl",qa:"hmkw",oa:"hmci",ta:"hmsr",pa:"hmcu",m:0,k:Math.round(+new Date/1E3),protocol:"https:"===document.location.protocol?"https:":"http:",J:A()||"https:"===document.location.protocol?"https:":"http:",Pa:0,Ga:6E5,Ha:10,Ia:1024,Fa:1,K:2147483647,W:"cc cf ci ck cl cm cp cu cw ds ep et fl ja ln lo lt nv rnd si st su v cv lv api u tt".split(" ")};
-(function(){var a={l:{},c:function(a,f){this.l[a]=this.l[a]||[];this.l[a].push(f)},r:function(a,f){this.l[a]=this.l[a]||[];for(var d=this.l[a].length,g=0;g<d;g++)this.l[a][g](f)}};return h.D=a})();
-(function(){function a(a,d){var g=document.createElement("script");g.charset="utf-8";b.d(d,"Function")&&(g.readyState?g.onreadystatechange=function(){if("loaded"===g.readyState||"complete"===g.readyState)g.onreadystatechange=t,d()}:g.onload=function(){d()});g.src=a;var k=document.getElementsByTagName("script")[0];k.parentNode.insertBefore(g,k)}var b=mt.lang;return h.load=a})();
-(function(){function a(){return function(){h.b.a.nv=0;h.b.a.st=4;h.b.a.et=3;h.b.a.ep=h.C.la()+","+h.C.ia();h.b.g()}}function b(){clearTimeout(y);var a;x&&(a="visible"==document[x]);z&&(a=!document[z]);e="undefined"==typeof a?s:a;if((!n||!l)&&e&&m)u=s,p=+new Date;else if(n&&l&&(!e||!m))u=w,q+=+new Date-p;n=e;l=m;y=setTimeout(b,100)}function f(a){var p=document,l="";if(a in p)l=a;else for(var b=["webkit","ms","moz","o"],q=0;q<b.length;q++){var m=b[q]+a.charAt(0).toUpperCase()+a.slice(1);if(m in p){l=
-m;break}}return l}function d(a){if(!("focus"==a.type||"blur"==a.type)||!(a.target&&a.target!=window))m="focus"==a.type||"focusin"==a.type?s:w,b()}var g=mt.event,k=h.D,n=s,e=s,l=s,m=s,v=+new Date,p=v,q=0,u=s,x=f("visibilityState"),z=f("hidden"),y;b();(function(){var a=x.replace(/[vV]isibilityState/,"visibilitychange");g.c(document,a,b);g.c(window,"pageshow",b);g.c(window,"pagehide",b);"object"==typeof document.onfocusin?(g.c(document,"focusin",d),g.c(document,"focusout",d)):(g.c(window,"focus",d),
-g.c(window,"blur",d))})();h.C={la:function(){return+new Date-v},ia:function(){return u?+new Date-p+q:q}};k.c("pv-b",function(){g.c(window,"unload",a())});return h.C})();
-(function(){var a=mt.lang,b=h.B,f=h.load,d={va:function(d){if((window._dxt===r||a.d(window._dxt,"Array"))&&"undefined"!==typeof h.b){var k=h.b.G();f([b.protocol,"//datax.baidu.com/x.js?si=",c.id,"&dm=",encodeURIComponent(k)].join(""),d)}},Ea:function(b){if(a.d(b,"String")||a.d(b,"Number"))window._dxt=window._dxt||[],window._dxt.push(["_setUserId",b])}};return h.ba=d})();
-(function(){function a(l){for(var b in l)if({}.hasOwnProperty.call(l,b)){var d=l[b];f.d(d,"Object")||f.d(d,"Array")?a(d):l[b]=String(d)}}function b(a){return a.replace?a.replace(/'/g,"'0").replace(/\*/g,"'1").replace(/!/g,"'2"):a}var f=mt.lang,d=mt.j,g=h.B,k=h.D,n=h.ba,e={p:[],z:0,R:w,init:function(){e.e=0;k.c("pv-b",function(){e.ca();e.ea()});k.c("pv-d",e.fa);k.c("stag-b",function(){h.b.a.api=e.e||e.z?e.e+"_"+e.z:""});k.c("stag-d",function(){h.b.a.api=0;e.e=0;e.z=0})},ca:function(){var a=window._hmt||
-[];if(!a||f.d(a,"Array"))window._hmt={id:c.id,cmd:{},push:function(){for(var a=window._hmt,l=0;l<arguments.length;l++){var p=arguments[l];f.d(p,"Array")&&(a.cmd[a.id].push(p),"_setAccount"===p[0]&&(1<p.length&&/^[0-9a-f]{32}$/.test(p[1]))&&(p=p[1],a.id=p,a.cmd[p]=a.cmd[p]||[]))}}},window._hmt.cmd[c.id]=[],window._hmt.push.apply(window._hmt,a)},ea:function(){var a=window._hmt;if(a&&a.cmd&&a.cmd[c.id])for(var b=a.cmd[c.id],d=/^_track(Event|MobConv|Order|RTEvent)$/,p=0,q=b.length;p<q;p++){var f=b[p];
-d.test(f[0])?e.p.push(f):e.L(f)}a.cmd[c.id]={push:e.L}},fa:function(){if(0<e.p.length)for(var a=0,b=e.p.length;a<b;a++)e.L(e.p[a]);e.p=t},L:function(a){var b=a[0];if(e.hasOwnProperty(b)&&f.d(e[b],"Function"))e[b](a)},_setAccount:function(a){1<a.length&&/^[0-9a-f]{32}$/.test(a[1])&&(e.e|=1)},_setAutoPageview:function(a){if(1<a.length&&(a=a[1],w===a||s===a))e.e|=2,h.b.Q=a},_trackPageview:function(a){if(1<a.length&&a[1].charAt&&"/"===a[1].charAt(0)){e.e|=4;h.b.a.et=0;h.b.a.ep="";h.b.H?(h.b.a.nv=0,h.b.a.st=
-4):h.b.H=s;var b=h.b.a.u,d=h.b.a.su;h.b.a.u=g.protocol+"//"+document.location.host+a[1];e.R||(h.b.a.su=document.location.href);h.b.g();h.b.a.u=b;h.b.a.su=d}},_trackEvent:function(a){2<a.length&&(e.e|=8,h.b.a.nv=0,h.b.a.st=4,h.b.a.et=4,h.b.a.ep=b(a[1])+"*"+b(a[2])+(a[3]?"*"+b(a[3]):"")+(a[4]?"*"+b(a[4]):""),h.b.g())},_setCustomVar:function(a){if(!(4>a.length)){var d=a[1],f=a[4]||3;if(0<d&&6>d&&0<f&&4>f){e.z++;for(var p=(h.b.a.cv||"*").split("!"),q=p.length;q<d-1;q++)p.push("*");p[d-1]=f+"*"+b(a[2])+
-"*"+b(a[3]);h.b.a.cv=p.join("!");a=h.b.a.cv.replace(/[^1](\*[^!]*){2}/g,"*").replace(/((^|!)\*)+$/g,"");""!==a?h.b.setData("Hm_cv_"+c.id,encodeURIComponent(a),c.age):h.b.xa("Hm_cv_"+c.id)}}},_setReferrerOverride:function(a){1<a.length&&(h.b.a.su=a[1].charAt&&"/"===a[1].charAt(0)?g.protocol+"//"+window.location.host+a[1]:a[1],e.R=s)},_trackOrder:function(b){b=b[1];f.d(b,"Object")&&(a(b),e.e|=16,h.b.a.nv=0,h.b.a.st=4,h.b.a.et=94,h.b.a.ep=d.stringify(b),h.b.g())},_trackMobConv:function(a){if(a={webim:1,
-tel:2,map:3,sms:4,callback:5,share:6}[a[1]])e.e|=32,h.b.a.et=93,h.b.a.ep=a,h.b.g()},_trackRTPageview:function(b){b=b[1];f.d(b,"Object")&&(a(b),b=d.stringify(b),512>=encodeURIComponent(b).length&&(e.e|=64,h.b.a.rt=b))},_trackRTEvent:function(b){b=b[1];if(f.d(b,"Object")){a(b);b=encodeURIComponent(d.stringify(b));var m=function(a){var b=h.b.a.rt;e.e|=128;h.b.a.et=90;h.b.a.rt=a;h.b.g();h.b.a.rt=b},k=b.length;if(900>=k)m.call(this,b);else for(var k=Math.ceil(k/900),p="block|"+Math.round(Math.random()*
-g.K).toString(16)+"|"+k+"|",q=[],u=0;u<k;u++)q.push(u),q.push(b.substring(900*u,900*u+900)),m.call(this,p+q.join("|")),q=[]}},_setUserId:function(a){a=a[1];n.va();n.Ea(a)}};e.init();h.$=e;return h.$})();
-(function(){function a(){"undefined"===typeof window["_bdhm_loaded_"+c.id]&&(window["_bdhm_loaded_"+c.id]=s,this.a={},this.Q=s,this.H=w,this.init())}var b=mt.url,f=mt.V,d=mt.N,g=mt.lang,k=mt.cookie,n=mt.h,e=mt.localStorage,l=mt.sessionStorage,m=h.B,v=h.D;a.prototype={I:function(a,b){a="."+a.replace(/:\d+/,"");b="."+b.replace(/:\d+/,"");var d=a.indexOf(b);return-1<d&&d+b.length===a.length},S:function(a,b){a=a.replace(/^https?:\/\//,"");return 0===a.indexOf(b)},s:function(a){for(var d=0;d<c.dm.length;d++)if(-1<
-c.dm[d].indexOf("/")){if(this.S(a,c.dm[d]))return s}else{var f=b.P(a);if(f&&this.I(f,c.dm[d]))return s}return w},G:function(){for(var a=document.location.hostname,b=0,d=c.dm.length;b<d;b++)if(this.I(a,c.dm[b]))return c.dm[b].replace(/(:\d+)?[\/\?#].*/,"");return a},O:function(){for(var a=0,b=c.dm.length;a<b;a++){var d=c.dm[a];if(-1<d.indexOf("/")&&this.S(document.location.href,d))return d.replace(/^[^\/]+(\/.*)/,"$1")+"/"}return"/"},ma:function(){if(!document.referrer)return m.k-m.m>c.vdur?1:4;var a=
-w;this.s(document.referrer)&&this.s(document.location.href)?a=s:(a=b.P(document.referrer),a=this.I(a||"",document.location.hostname));return a?m.k-m.m>c.vdur?1:4:3},getData:function(a){try{return k.get(a)||l.get(a)||e.get(a)}catch(b){}},setData:function(a,b,d){try{k.set(a,b,{domain:this.G(),path:this.O(),F:d}),d?e.set(a,b,d):l.set(a,b)}catch(f){}},xa:function(a){try{k.set(a,"",{domain:this.G(),path:this.O(),F:-1}),l.remove(a),e.remove(a)}catch(b){}},Ca:function(){var a,b,d,f,e;m.m=this.getData("Hm_lpvt_"+
-c.id)||0;13===m.m.length&&(m.m=Math.round(m.m/1E3));b=this.ma();a=4!==b?1:0;if(d=this.getData("Hm_lvt_"+c.id)){f=d.split(",");for(e=f.length-1;0<=e;e--)13===f[e].length&&(f[e]=""+Math.round(f[e]/1E3));for(;2592E3<m.k-f[0];)f.shift();e=4>f.length?2:3;for(1===a&&f.push(m.k);4<f.length;)f.shift();d=f.join(",");f=f[f.length-1]}else d=m.k,f="",e=1;this.setData("Hm_lvt_"+c.id,d,c.age);this.setData("Hm_lpvt_"+c.id,m.k);d=m.k===this.getData("Hm_lpvt_"+c.id)?"1":"0";if(0===c.nv&&this.s(document.location.href)&&
-(""===document.referrer||this.s(document.referrer)))a=0,b=4;this.a.nv=a;this.a.st=b;this.a.cc=d;this.a.lt=f;this.a.lv=e},Ba:function(){for(var a=[],b=this.a.et,d=0,f=m.W.length;d<f;d++){var e=m.W[d],g=this.a[e];"undefined"!==typeof g&&""!==g&&("tt"!==e||"tt"===e&&0===b)&&a.push(e+"="+encodeURIComponent(g))}this.a.rt&&(0===b?a.push("rt="+encodeURIComponent(this.a.rt)):90===b&&a.push("rt="+this.a.rt));return a.join("&")},Da:function(){this.Ca();this.a.si=c.id;this.a.su=document.referrer;this.a.ds=n.ya;
-this.a.cl=n.colorDepth+"-bit";this.a.ln=String(n.language).toLowerCase();this.a.ja=n.javaEnabled?1:0;this.a.ck=n.cookieEnabled?1:0;this.a.lo="number"===typeof _bdhm_top?1:0;this.a.fl=d.na();this.a.v="1.2.11";this.a.cv=decodeURIComponent(this.getData("Hm_cv_"+c.id)||"");this.a.tt=document.title||"";var a=document.location.href;this.a.cm=b.i(a,m.ra)||"";this.a.cp=b.i(a,m.sa)||"";this.a.cw=b.i(a,m.qa)||"";this.a.ci=b.i(a,m.oa)||"";this.a.cf=b.i(a,m.ta)||"";this.a.cu=b.i(a,m.pa)||""},init:function(){try{this.Da(),
-0===this.a.nv?this.Aa():this.M(".*"),h.b=this,this.aa(),v.r("pv-b"),this.za()}catch(a){var b=[];b.push("si="+c.id);b.push("n="+encodeURIComponent(a.name));b.push("m="+encodeURIComponent(a.message));b.push("r="+encodeURIComponent(document.referrer));f.log(m.J+"//"+m.T+"?"+b.join("&"))}},za:function(){function a(){v.r("pv-d")}this.Q?(this.H=s,this.a.et=0,this.a.ep="",this.g(a)):a()},g:function(a){var b=this;b.a.rnd=Math.round(Math.random()*m.K);v.r("stag-b");var d=m.J+"//"+m.T+"?"+b.Ba();v.r("stag-d");
-b.Y(d);f.log(d,function(d){b.M(d);g.d(a,"Function")&&a.call(b)})},aa:function(){var a=document.location.hash.substring(1),d=RegExp(c.id),f=-1<document.referrer.indexOf(m.Z),e=b.i(a,"jn"),g=/^heatlink$|^select$/.test(e);a&&(d.test(a)&&f&&g)&&(this.a.rnd=Math.round(Math.random()*m.K),a=document.createElement("script"),a.setAttribute("type","text/javascript"),a.setAttribute("charset","utf-8"),a.setAttribute("src",m.protocol+"//"+c.js+e+".js?"+this.a.rnd),e=document.getElementsByTagName("script")[0],
-e.parentNode.insertBefore(a,e))},Y:function(a){var b=l.get("Hm_unsent_"+c.id)||"",d=this.a.u?"":"&u="+encodeURIComponent(document.location.href),b=encodeURIComponent(a.replace(/^https?:\/\//,"")+d)+(b?","+b:"");l.set("Hm_unsent_"+c.id,b)},M:function(a){var b=l.get("Hm_unsent_"+c.id)||"";b&&(a=encodeURIComponent(a.replace(/^https?:\/\//,"")),a=RegExp(a.replace(/([\*\(\)])/g,"\\$1")+"(%26u%3D[^,]*)?,?","g"),(b=b.replace(a,"").replace(/,$/,""))?l.set("Hm_unsent_"+c.id,b):l.remove("Hm_unsent_"+c.id))},
-Aa:function(){var a=this,b=l.get("Hm_unsent_"+c.id);if(b)for(var b=b.split(","),d=function(b){f.log(m.J+"//"+decodeURIComponent(b),function(b){a.M(b)})},e=0,g=b.length;e<g;e++)d(b[e])}};return new a})();
-(function(){var a=mt.o,b=mt.event,f=mt.url,d=mt.j;try{if(window.performance&&performance.timing&&"undefined"!==typeof h.b){var g=+new Date,k=function(a){var b=performance.timing,d=b[a+"Start"]?b[a+"Start"]:0;a=b[a+"End"]?b[a+"End"]:0;return{start:d,end:a,value:0<a-d?a-d:0}},n=t;a.U(function(){n=+new Date});var e=function(){var a,b,e;e=k("navigation");b=k("request");e={netAll:b.start-e.start,netDns:k("domainLookup").value,netTcp:k("connect").value,srv:k("response").start-b.start,dom:performance.timing.domInteractive-
-performance.timing.fetchStart,loadEvent:k("loadEvent").end-e.start};a=document.referrer;var l=a.match(/^(http[s]?:\/\/)?([^\/]+)(.*)/)||[],u=t;b=t;if("www.baidu.com"===l[2]||"m.baidu.com"===l[2])u=f.i(a,"qid"),b=f.i(a,"click_t");a=u;e.qid=a!=t?a:"";b!=t?(e.bdDom=n?n-b:0,e.bdRun=g-b,e.bdDef=k("navigation").start-b):(e.bdDom=0,e.bdRun=0,e.bdDef=0);h.b.a.et=87;h.b.a.ep=d.stringify(e);h.b.g()};b.c(window,"load",function(){setTimeout(e,500)})}}catch(l){}})();
-(function(){var a=mt.h,b=mt.lang,f=mt.event,d=mt.j;if("undefined"!==typeof h.b&&(c.med||(!a.wa||7<a.ua)&&c.cvcc)){var g,k,n,e,l=function(a){if(a.item){for(var b=a.length,d=Array(b);b--;)d[b]=a[b];return d}return[].slice.call(a)},m=function(a,b){for(var d in a)if(a.hasOwnProperty(d)&&b.call(a,d,a[d])===w)return w},v=function(a,f){var e={};e.n=g;e.t="clk";e.v=a;if(f){var k=f.getAttribute("href"),l=f.getAttribute("onclick")?""+f.getAttribute("onclick"):t,m=f.getAttribute("id")||"";n.test(k)?(e.sn="mediate",
-e.snv=k):b.d(l,"String")&&n.test(l)&&(e.sn="wrap",e.snv=l);e.id=m}h.b.a.et=86;h.b.a.ep=d.stringify(e);h.b.g();for(e=+new Date;400>=+new Date-e;);};if(c.med)k="/zoosnet",g="swt",n=/swt|zixun|call|chat|zoos|business|talk|kefu|openkf|online|\/LR\/Chatpre\.aspx/i,e={click:function(){for(var a=[],b=l(document.getElementsByTagName("a")),b=[].concat.apply(b,l(document.getElementsByTagName("area"))),b=[].concat.apply(b,l(document.getElementsByTagName("img"))),d,f,e=0,g=b.length;e<g;e++)d=b[e],f=d.getAttribute("onclick"),
-d=d.getAttribute("href"),(n.test(f)||n.test(d))&&a.push(b[e]);return a}};else if(c.cvcc){k="/other-comm";g="other";n=c.cvcc.q||r;var p=c.cvcc.id||r;e={click:function(){for(var a=[],b=l(document.getElementsByTagName("a")),b=[].concat.apply(b,l(document.getElementsByTagName("area"))),b=[].concat.apply(b,l(document.getElementsByTagName("img"))),d,e,f,g=0,k=b.length;g<k;g++)d=b[g],n!==r?(e=d.getAttribute("onclick"),f=d.getAttribute("href"),p?(d=d.getAttribute("id"),(n.test(e)||n.test(f)||p.test(d))&&
-a.push(b[g])):(n.test(e)||n.test(f))&&a.push(b[g])):p!==r&&(d=d.getAttribute("id"),p.test(d)&&a.push(b[g]));return a}}}if("undefined"!==typeof e&&"undefined"!==typeof n){var q;k+=/\/$/.test(k)?"":"/";var u=function(a,d){if(q===d)return v(k+a,d),w;if(b.d(d,"Array")||b.d(d,"NodeList"))for(var e=0,f=d.length;e<f;e++)if(q===d[e])return v(k+a+"/"+(e+1),d[e]),w};f.c(document,"mousedown",function(a){a=a||window.event;q=a.target||a.srcElement;var d={};for(m(e,function(a,e){d[a]=b.d(e,"Function")?e():document.getElementById(e)});q&&
-q!==document&&m(d,u)!==w;)q=q.parentNode})}}})();(function(){var a=mt.o,b=mt.lang,f=mt.event,d=mt.j;if("undefined"!==typeof h.b&&b.d(c.cvcf,"Array")&&0<c.cvcf.length){var g={X:function(){for(var b=c.cvcf.length,d,e=0;e<b;e++)(d=a.ha(decodeURIComponent(c.cvcf[e])))&&f.c(d,"click",g.da())},da:function(){return function(){h.b.a.et=86;var a={n:"form",t:"clk"};a.id=this.id;h.b.a.ep=d.stringify(a);h.b.g()}}};a.U(function(){g.X()})}})();
-(function(){var a=mt.event,b=mt.j;if(c.med&&"undefined"!==typeof h.b){var f=+new Date,d={n:"anti",sb:0,kb:0,clk:0},g=function(){h.b.a.et=86;h.b.a.ep=b.stringify(d);h.b.g()};a.c(document,"click",function(){d.clk++});a.c(document,"keyup",function(){d.kb=1});a.c(window,"scroll",function(){d.sb++});a.c(window,"unload",function(){d.t=+new Date-f;g()});a.c(window,"load",function(){setTimeout(g,5E3)})}})();})();
-_application/javascript            1   <   Z   i   €   ’   ¨   ®   Î   Ï  ¨“  ¨  ¨¢  ¨«  ¨Á  ¨ï  ®×  ÊÂ  ÊË  ÊÔ  Ë  ĞÖ  Ü&  Ü@  ÜI  Üt  â@  â÷  ã   ã<  çG <2             #             <K

@@ -188,3 +188,5 @@ const schema = new graphql.GraphQLSchema({query: queryType})
 ```
 以上queryType就是第二步创建的type
 >注意：从以上不难看出，使用constucting type会带来代码量上的上升，但是却更容易维护，没有硬性要求使用哪种方式，但是如果在乎质量的话，可以尝试用constucting
+
+[官方文档](https://graphql.cn/learn)
