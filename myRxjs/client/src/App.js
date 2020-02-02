@@ -16,11 +16,6 @@ function App() {
     .map(x => x + '!!!')
     .toArray()
     .subscribe((x) => console.log(x))
-    // Observable.of({id: 1,name: 'merry'}, {id: 2,name: 'terroy'},{id: -1,name: 'tom'},{id: 2,name:'jack'})
-    // .groupBy(p=>p.id)
-    // .mergeMap(groupOb => {console.log(groupOb);return groupOb.reduce((prev, curr) => [...prev, curr],[])})
-    // .toArray()
-    // .subscribe(x => console.log(x))
   },[])
   return (
     <div className="App">
