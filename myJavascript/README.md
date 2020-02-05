@@ -1,3 +1,18 @@
+<!-- TOC -->autoauto-
+* [什么是javascript?](#什么是javascript)
+* [组成](#组成)
+* [ECMAScript](#ecmascript)
+  * [作用域](#作用域)
+  * [词法作用域](#词法作用域)
+  * [闭包](#闭包)
+  * [this](#this)
+  * [指向](#指向)
+  * [调用位置](#调用位置)
+  * [绑定规则](#绑定规则)
+  * [对象](#对象)
+  * [Getter和Setter](#getter和setter)
+  * [原型](#原型)
+* [DOM](#DOM)
 ## 什么是javascript?
 JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。
 ## 组成
@@ -174,11 +189,11 @@ var cat = new Cat('tom');
 console.log(cat.a) //tom
 ```
 >箭头函数无this，它内部的this是根据外层作用域决定的
-## 对象
+### 对象
 访问对象的值可以使用.操作符或者[]操作符
 * .操作符称为属性访问
 * []操作符称为键访问
-### Getter和Setter
+#### Getter和Setter
 getter和setter可以改写默认操作，但是只能应用在单个属性上，无法应用在整个对象上，getter是在获取属性值时调用，setter是在设置属性值时调用
 ```js
 let obj = {
@@ -199,7 +214,7 @@ obj.name //属性访问
 obj['name'] //键访问
 ```
 区别: .操作符要求命名满足标识符的命名规范，而[]操作符可以接收任何UTF-8/Unicode字符串作为属性名
-## 原型
+### 原型
 **为什么需要原型**
 ```js
 function Cat(age, name) {
@@ -279,6 +294,37 @@ my.getVal() // true
 my.getSubVal() //false
 ```
 通过将一个构造函数的原型重写，代之以一个新构造函数的实例，就实现了原型链，原型链是一种继承。如同上面，mySubType继承SubType,SubType继承SuperType;
+## DOM
+文档对象模型（DOM，Document Object Model）是针对 XML 但经过扩展用于 HTML 的应用程序编程接口（API，Application Programming Interface）,也就是说，我们可以在javascript中，用dom来对HTML进行操作。
+```js
+let doc = document.getElementById("intro");  //id查找
+doc.innerHTML = '新的html'
+```
+以上，我们将操作dom，查找html中id为intro的标签，并修改它的内部元素。
+## BOM
+BOM 提供了很多访问浏览器的功能，这些功能与网友内容无关。
+### window对象
+**窗口位置**
+  * screenLeft和screenTop分别表示窗口相对于屏幕左边和上边的位置 --IE、Safari、Opera和Chrome
+  * screenX和screenY分别表示窗口相对于屏幕左边和上边的位置 --Safari、Firefox和Chrome
+
+  ```js
+  let leftPos = (typeof window.screenLeft === 'number') ? window.screenLeft : window.screenX;
+  let topPos = (typeof window.screenTop === 'number') ? window.screenTop : window.screenY;
+  ```
+  如果浏览器中screenLeft和screenTop属性存在，则使用他们，否则用screenX和screenY、
+**窗口大小**
+  * innerWidth、innerHeight、outerWidth、outerHeight --IE9+、Firefox、Safari、Opera和Chrome
+
+  outerWidth: 浏览器窗口本身的尺寸
+  innterWidth: 页面中视图区的大小。
+  >ie8及更早之前版本没有提供提供取得当前浏览器窗口尺寸的属性，它通过DOM提供了页面可见区域的信息
+
+  渲染页面的模式分为混杂模式和标准模式，document中有一个属性叫`compatMode`用于区分渲染页面的模式
+  * document.compatMode === 'CSS1Compat'  --标准模式
+  * document.compatMode === 'BackCompat'  --混杂模式
+  标准模式下可以使用document.documentElement.clientWidth来获取页面视口的信息,混杂模式下可以使用document.body.clientWidth来获取
+
 
 
 
