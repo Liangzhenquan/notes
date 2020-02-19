@@ -87,4 +87,155 @@ console.log(4)
 ```
 以上，整体代码是同步任务，执行test，test是同步，依次执行，遇到setTimeout，通知`定时触发器线程`，间隔一个时间后，会触发一个回调事件，`定时触发器线程`收到通知后，间隔一个时间，将回调事件放入到由`事件触发线程`管理的`任务队列`，然后继续执行test的代码，遇到`Promise.resolve().then`,`then()`里面的回调是一个异步任务，通知事件触发线程，将其加入到`任务队列`,test继续执行，打印3，test函数执行完毕，test出栈，当前执行栈为window，打印4，当前`宏任务`执行完毕，检查`任务队列`是否有任务，检查到有微任务，将微任务放到执行栈中执行，打印2，然后检查到有宏任务，将宏任务放到执行栈中执行，打印1。
 
->检查任务队列时，先微后宏，有事件回调，则移入执行栈由`js引擎线程`执行。
+>`任务队列`分为`微任务队列`和`宏任务队列`,`setTimeout/setInterval`这些会进入`宏任务队列`,`Promise.resolve().then()`的回调事件会进入`微任务队列`，检查任务队列时，先微后宏，有事件回调，则移入执行栈由`js引擎线程`执行。
+
+链接:
+* https://juejin.im/post/5e22b391f265da3e204d8c14
+* https://juejin.im/post/5a6547d0f265da3e283a1df7
+## defineProperty和Proxy
+### defineProperty
+语法：
+`Object.defineProperty(obj, prop, descriptor)`
+* `obj`-要在其上定义属性的对象。
+* `prop`-要定义或修改的属性的名称。
+* `descriptor`-将被定义或修改的属性描述符。
+
+返回：被传递给函数的对象。
+#### 属性描述符-descriptor
+descriptor是一个对象，对象里目前存在的属性描述符有两种主要形式：`数据描述符`和`存取描述符`。`数据描述符`是一个具有值的属性，该值可能是可写的，也可能不是可写的。`存取描述符`是由getter-setter函数对描述的属性。描述符必须是这两种形式之一；不能同时是两者。
+**`数据描述符`和`存取描述符`均具有:**
+`configurable`:
+当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为 false。
+`enumerable`:
+当且仅当该属性的enumerable为true时，该属性才能够出现在对象的枚举属性中。默认为 false。
+**`数据描述符`才有:**
+`value`:
+该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 undefined。
+`writable`:
+当且仅当该属性的writable为true时，value才能被赋值运算符改变。默认为 false。
+**`存取描述符`才有:**
+`get`:
+一个给属性提供 getter 的方法，如果没有 getter 则为 undefined。当访问该属性时，该方法会被执行，方法执行时没有参数传入，但是会传入this对象（由于继承关系，这里的this并不一定是定义该属性的对象）。
+`set`:
+一个给属性提供 setter 的方法，如果没有 setter 则为 undefined。当属性值修改时，触发执行该方法。该方法将接受唯一参数，即该属性新的参数值。
+>如果一个描述符不具有value,writable,get 和 set 任意一个关键字，那么它将被认为是一个数据描述符。如果一个描述符同时有(value或writable)和(get或set)关键字，将会产生一个异常。
+### Proxy
+用于定义基本操作的自定义行为（如属性查找，赋值，枚举，函数调用等），可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”。
+语法
+`let obj = new Proxy(target, handler)`
+以上，`new Proxy`生成一个`Proxy`实例,`target`是要拦截的目标对象，`handler`也是一个对象，用来定制拦截行为。
+```js
+let proxy = new Proxy({}, {
+  get(target,propKey) {
+    return 1
+  }
+})
+proxy.name //1
+proxy.age //1
+```
+如果handler没有设置任何拦截，那就等同于直接通向原对象。
+```js
+var target = {};
+var handler = {};
+var proxy = new Proxy(target, handler);
+proxy.a = 'b';
+target.a // "b"
+```
+**handler**
+handler是一个对象，它具有一些属性
+`get`:
+定义取值操作,get是一个函数，接收三个参数:`target`:目标对象，也就是`Proxy`构造函数的第一个参数的值，`propKey`，目标对象的键名，`receiver`:是Proxy。
+```js
+let proxy = new Proxy({age: 10}, {
+  get(target,propKey,receiver) {
+    console.log(target);
+    console.log(propKey);
+    return 1
+  }
+})
+proxy.age // {age: 10};name;1
+```
+`set`:
+定义存值操作，是一个函数，接收四个参数:`target`:目标对象，也就是`Proxy`构造函数的第一个参数的值，`propKey`:目标对象的键名，`value`:新值,`receiver`:是Proxy。
+```js
+let proxy = new Proxy({age: 10}, {
+  set(target,propKey,value,receiver) {
+    console.log('value:',value);
+    return target[propkey] = value;
+  }
+})
+proxy.age = 11 // value: 11
+```
+...
+总结：
+Object.definePrototype缺点：对数组支持不好，无法监听到数组的变化，
+Proxy缺点：兼容性不是太好，不兼容IE，且无法通过polyfill提供兼容。
+## 手写代码
+### new
+过程：
+* 1.创建一个新对象
+* 2.新对象执行[[原型]]连接
+* 3.this指向新创建的对象
+* 4.如果该函数没有返回对象，则返回this。
+
+```js
+// 构造函数
+function Cat(name, age) {
+  this.name = name;
+  this.age = age;
+  // return {name: 'jack'}
+}
+// new
+function New(Con,...args) {
+  let obj = {}
+  Object.setPrototypeOf(obj, Con.prototype);
+  let result = Con.apply(obj, args);
+  return result instanceof Object ? result : obj
+}
+let cat = New(Cat, 'jack', 12)
+```
+以上判断构造函数的返回值是否为对象，如果是对象，就使用构造函数的返回值，否则返回创建的对象
+### Promise
+思路：
+* 1.三种状态:`pending`、`fulfilled(resolved)`、`rejected`
+* 2.只能由`pending`态转换为`fulfilled(resolved)`或`rejected`
+* 3.一旦状态发生改变，不可逆转
+```js
+function createPromise(constructor) {
+  let that = this;
+  that.status = 'pending'  //定义初始状态
+  that.value = undefined  //定义状态为resolved的时候的状态
+  self.reason=undefined;//定义状态为rejected的时候的状态
+  function resolve(value) {
+    if(that.status === 'pending') {
+      that.value = value;
+      that.status = 'resolved'
+    }
+  }
+  function reject(reason) {
+    if(that.status === 'pending') {
+      that.reason = reason;
+      that.status = 'rejected'
+    }
+  }
+  // 捕获构造异常
+  try {
+    constructor(resolve,reject);
+  }catch(e) {
+     reject(e);
+  }
+}
+//定义then方法
+createPromise.prototype.then = function(onFullfilled,onRejected) {
+  let that = this;
+  switch(that.status) {
+    case "resolved":
+      onFullfilled(that.value);
+      break;
+    case "rejected":
+      onRejected(that.reason);
+      break;
+    default:
+  }
+}
+```
