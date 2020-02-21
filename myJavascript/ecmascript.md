@@ -1,3 +1,19 @@
+* [javascript运行机制](#javascript运行机制)
+   * [CPU、进程和线程](#cpu进程和线程)
+   * [浏览器进程](#浏览器进程)
+   * [浏览器内核（渲染进程）](#浏览器内核渲染进程)
+   * [为什么javascript是单线程的？](#为什么javascript是单线程的)
+   * [为什么 GUI 渲染线程与 JS 引擎线程互斥？](#为什么-gui-渲染线程与-js-引擎线程互斥)
+   * [从 Event Loop 看 JS 的运行机制](#从-event-loop-看-js-的运行机制)
+   * [宏任务与微任务](#宏任务与微任务)
+* [defineProperty和Proxy](#defineproperty和proxy) [defineProperty](#defineproperty)auto    -
+   * [属性描述符-descriptor](#属性描述符-descriptor)
+   * [Proxy](#proxy)
+* [Generator](#generator)
+* [async-await](#async-await)
+* [手写代码](#手写代码)
+   * [new](#new)
+   * [Promise](#promise)
 ## javascript运行机制
 ### CPU、进程和线程
 **1.CPU**
@@ -170,6 +186,118 @@ proxy.age = 11 // value: 11
 总结：
 Object.definePrototype缺点：对数组支持不好，无法监听到数组的变化，
 Proxy缺点：兼容性不是太好，不兼容IE，且无法通过polyfill提供兼容。
+## Generator
+ES6 提供的一种异步编程解决方案，
+* 状态机，封装了多种状态
+* 遍历器对象生成函数，也就是说调用`Generator`函数会返回一个遍历器对象
+
+```js
+function* a() {
+  yield 'hello';
+  yield 'world';
+  return 'ending';
+}
+let h = a();
+h.next() //{value: hello, done: false}
+```
+`next()`可以接受参数，该参数被当作上一个yield表达式的返回值。
+```js
+function* gen() {
+  let a = yield 10;
+  console.log('a', a);
+}
+let g = gen();
+g.next().value //10
+g.next() //a undefined;
+// 如果给了next一个参数，就相当于赋值 a = value;
+let g1 = gen();
+let result = g.next().value;  //将yield 10返回的值拿出来，然后给next传进去，相当于让a = 10;
+g.next(result);  //a 10
+```
+我们可以用它执行一个真实的异步任务：
+```js
+function* gen() {
+  let url = 'https://api.github.com/users/github';
+  let result = yield fetch(url);
+  yield fetch(url, result);
+  // 假设以上第二个fetch依赖于第一个的结果。
+}
+// 以下将第一个fetch的结果通过next传给第二个fetch当请求内容。
+let g = gen();
+let result = g.next();
+result.value.then(() => 10).then((data) => {
+  let result =  g.next(data).value
+})
+```
+## async-await
+`async函数`是`Generator函数`的一个语法糖，实现原理，是将 Generator 函数和自动执行器，包装在一个函数里。
+`await`必放在`async函数`内部，否则会报错,`await`等待一个表达式，这个表达式的返回值可以是一个promise对象也可以是其他值。
+>await后面的代码是微任务，相当于`promise.then()`中的回调
+
+```js
+async function a1() {
+  console.log(1);
+  await a2();
+  console.log(5);
+}
+async function a2() {
+  console.log(2);
+}
+a1();
+console.log(3);
+```
+以上将输出1、2、3、5，因为`await`紧跟着的a2是同步，而`await`后面的代码是微任务。
+等同于:
+```js
+function a1() {
+  console.log(1);
+  Promise.resolve(a2())
+  .then((r) => {
+    console.log(5)
+  })
+}
+async function a2() {
+  console.log(2);
+}
+a1();
+console.log(3);
+```
+我们来看一个例子：
+```js
+async function async1() {
+    console.log('async1 start');
+    await async2();
+    console.log('async1 end');
+}
+async function async2() {
+    //async2做出如下更改：
+    new Promise(function(resolve) {
+    console.log('promise1');
+    resolve();
+}).then(function() {
+    console.log('promise2');
+    });
+}
+console.log('script start');
+
+setTimeout(function() {
+    console.log('setTimeout');
+}, 0)
+async1();
+new Promise(function(resolve) {
+    console.log('promise3');
+    resolve();
+}).then(function() {
+    console.log('promise4');
+});
+console.log('script end');
+```
+以上我们只需要梳理宏任务和微任务即可，
+* 1.`整体script`作为一次`宏任务`,遇到`then()`就把它的回调放到微任务队列，遇到`setTimeout()`就把它的回调放到宏任务队列。`await`后面的代码相当于`then()`中的回调，所以:
+* 执行第一次宏任务，打印：script start、async1 start、promise1、promise3、script end；
+* 执行第一次微任务，打印：promise2、async1 end、promise4，
+* 执行第二次宏任务，打印：setTimeout。
+* 无微任务和宏任务，循环结束。
 ## 手写代码
 ### new
 过程：
