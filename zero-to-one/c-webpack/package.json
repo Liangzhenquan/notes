@@ -1,0 +1,19 @@
+{
+  "name": "c-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack", 
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.4.2",
+    "rimraf": "^3.0.2",
+    "webpack": "^4.42.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.11"
+  }
+}
